@@ -1,0 +1,19 @@
+- var subtitle = "Main"
+
+include head
+
+.row
+  .span3.offset4
+   - if ('undefined' !== typeof errors && errors.length)
+     ul#errors
+       - each error in errors
+         li.error= error
+   form(action='/login', method='post')
+     #login
+       label(for='user') Логин
+       input(type='text', name='user')
+     #password
+       label(for='pwd') Пароль
+       input(type='password', name='pwd')
+     #submit
+       input(type='submit') Login

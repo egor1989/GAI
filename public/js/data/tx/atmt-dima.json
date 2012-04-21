@@ -1,0 +1,1352 @@
+var atmt_dima = [
+	[
+		"17.06.2011",
+		"RUR",
+		"RBA SERV PAY 02628",
+		"Misc. & Specialt.Retail Stores",
+		"ST-PETERSBURG",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"17.06.2011",
+		"RUR",
+		"RBA SERV PAY 02628",
+		"Misc. & Specialt.Retail Stores",
+		"ST-PETERSBURG",
+		"Россия",
+		"-200.00",
+		"200.00"
+	],
+	[
+		"18.06.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-5851.10",
+		"5851.10"
+	],
+	[
+		"18.06.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-7035.80",
+		"7035.80"
+	],
+	[
+		"20.06.2011",
+		"USD",
+		"DEVELOPER EXPRESS INC",
+		"Computers/Peripheral/Softwre",
+		"7022620609",
+		"Соединенные Штаты",
+		"-1999.99",
+		"56799.72"
+	],
+	[
+		"24.06.2011",
+		"RUR",
+		"KARO FILM TC ATMOSFER",
+		"Motion Picture Theatres",
+		"SANKT-PETERS",
+		"Россия",
+		"-600.00",
+		"600.00"
+	],
+	[
+		"24.06.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-96287.00",
+		"96287.00"
+	],
+	[
+		"24.06.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-105800.00",
+		"105800.00"
+	],
+	[
+		"24.06.2011",
+		"RUR",
+		"IKEA DOM 6 RETURN",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-10225.00",
+		"10225.00"
+	],
+	[
+		"24.06.2011",
+		"RUR",
+		"MAXIDOM,R2004067",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-3503.31",
+		"3503.31"
+	],
+	[
+		"25.06.2011",
+		"RUR",
+		"O'KEY,N1006877",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-4388.90",
+		"4388.90"
+	],
+	[
+		"30.06.2011",
+		"RUR",
+		"ZOLOTOY LEV",
+		"Eating Places, Restaurants",
+		"ST-PETERSBURG",
+		"Россия",
+		"-1377.50",
+		"1377.50"
+	],
+	[
+		"02.07.2011",
+		"RUR",
+		"O KEY6",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-3338.40",
+		"3338.40"
+	],
+	[
+		"03.07.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"04.07.2011",
+		"RUR",
+		"OBI-PARNAS",
+		"Lawn & Garden Supp.Stores-Nurs",
+		"ST-PETERSBURG",
+		"Россия",
+		"-2073.00",
+		"2073.00"
+	],
+	[
+		"04.07.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Department Stores",
+		"SANKT-PETERS",
+		"Россия",
+		"-974.88",
+		"974.88"
+	],
+	[
+		"04.07.2011",
+		"RUR",
+		"VESTATRADING,N1009702",
+		"Home Supply Warehouse",
+		"ST.PETERSBURG",
+		"Россия",
+		"-116.00",
+		"116.00"
+	],
+	[
+		"04.07.2011",
+		"RUR",
+		"MAXIDOM,R2004092",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-2060.01",
+		"2060.01"
+	],
+	[
+		"06.07.2011",
+		"RUR",
+		"MAXIDOM,R2004071",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-1143.90",
+		"1143.90"
+	],
+	[
+		"09.07.2011",
+		"RUR",
+		"ULMART SIZRANSKAYA 4",
+		"Radio,Television, & Stero Sale",
+		"ST PETERSBURG",
+		"Россия",
+		"-27770.00",
+		"27770.00"
+	],
+	[
+		"13.07.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-7654.00",
+		"7654.00"
+	],
+	[
+		"13.07.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-12796.60",
+		"12796.60"
+	],
+	[
+		"13.07.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-936.60",
+		"936.60"
+	],
+	[
+		"13.07.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-936.60",
+		"936.60"
+	],
+	[
+		"14.07.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-200.00",
+		"200.00"
+	],
+	[
+		"16.07.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"20.07.2011",
+		"RUR",
+		"O KEY 12",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-3791.30",
+		"3791.30"
+	],
+	[
+		"21.07.2011",
+		"RUR",
+		"POLUSHKA",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-111.30",
+		"111.30"
+	],
+	[
+		"22.07.2011",
+		"RUR",
+		"O KEY6",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-5737.00",
+		"5737.00"
+	],
+	[
+		"27.07.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"30.07.2011",
+		"RUR",
+		"OBI-PARNAS",
+		"Lawn & Garden Supp.Stores-Nurs",
+		"ST-PETERSBURG",
+		"Россия",
+		"-9096.00",
+		"9096.00"
+	],
+	[
+		"04.08.2011",
+		"RUR",
+		"OBI-LAKHTA",
+		"Lawn & Garden Supp.Stores-Nurs",
+		"ST-PETERSBURG",
+		"Россия",
+		"-1253.00",
+		"1253.00"
+	],
+	[
+		"04.08.2011",
+		"RUR",
+		"LAND 5",
+		"Misc.Food Stores,Special Mrkts",
+		"SANKT-PETERBU",
+		"Россия",
+		"-2317.00",
+		"2317.00"
+	],
+	[
+		"06.08.2011",
+		"RUR",
+		"O KEY 12",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-3587.40",
+		"3587.40"
+	],
+	[
+		"07.08.2011",
+		"RUR",
+		"TSP iG 17273752295",
+		"Travel Agencies (Not Air)",
+		"7 495 937 700",
+		"Франция",
+		"-143349.20",
+		"143349.20"
+	],
+	[
+		"08.08.2011",
+		"RUR",
+		"iglobe.ru",
+		"Travel Agencies (Not Air)",
+		"Lausanne",
+		"Швейцария",
+		"-4311.36",
+		"4311.36"
+	],
+	[
+		"08.08.2011",
+		"RUR",
+		"TSP iG 17278543584",
+		"Travel Agencies (Not Air)",
+		"7 495 937 700",
+		"Франция",
+		"-97945.40",
+		"97945.40"
+	],
+	[
+		"08.08.2011",
+		"RUR",
+		"LUFTHANSA 2313647310",
+		"Lufthansa",
+		"KOELN",
+		"Россия",
+		"-39425.00",
+		"39425.00"
+	],
+	[
+		"08.08.2011",
+		"RUR",
+		"LUFTHANSA 2313647314",
+		"Lufthansa",
+		"KOELN",
+		"Россия",
+		"-47905.00",
+		"47905.00"
+	],
+	[
+		"08.08.2011",
+		"RUR",
+		"LUFTHANSA 2313647316",
+		"Lufthansa",
+		"KOELN",
+		"Россия",
+		"-47905.00",
+		"47905.00"
+	],
+	[
+		"08.08.2011",
+		"RUR",
+		"LUFTHANSA 2313647312",
+		"Lufthansa",
+		"KOELN",
+		"Россия",
+		"-47905.00",
+		"47905.00"
+	],
+	[
+		"18.08.2011",
+		"RUR",
+		"RBA SERV PAY 01774",
+		"Misc. & Specialt.Retail Stores",
+		"ST-PETERSBURG",
+		"Россия",
+		"-2000.00",
+		"2000.00"
+	],
+	[
+		"18.08.2011",
+		"RUR",
+		"RBA SERV PAY 01774",
+		"Misc. & Specialt.Retail Stores",
+		"ST-PETERSBURG",
+		"Россия",
+		"-500.00",
+		"500.00"
+	],
+	[
+		"18.08.2011",
+		"RUR",
+		"RBA SERV PAY 01774",
+		"Misc. & Specialt.Retail Stores",
+		"ST-PETERSBURG",
+		"Россия",
+		"-500.00",
+		"500.00"
+	],
+	[
+		"29.08.2011",
+		"RUR",
+		"ADIDAS SHOP",
+		"Sporting Goods Stores",
+		"SANKT-PETERS",
+		"Россия",
+		"-2490.00",
+		"2490.00"
+	],
+	[
+		"29.08.2011",
+		"RUR",
+		"O'KEY,N1006872",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-4115.50",
+		"4115.50"
+	],
+	[
+		"04.09.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-14786.00",
+		"14786.00"
+	],
+	[
+		"06.09.2011",
+		"EUR",
+		"Tahkon Keskusvaraamo",
+		"Misc.Prsnl Servcs.not elsew.cl",
+		"Nilsia",
+		"Финляндия",
+		"-1590.00",
+		"67098.00"
+	],
+	[
+		"09.09.2011",
+		"RUR",
+		"LAND 5",
+		"Misc.Food Stores,Special Mrkts",
+		"SANKT-PETERBU",
+		"Россия",
+		"-80.00",
+		"80.00"
+	],
+	[
+		"09.09.2011",
+		"RUR",
+		"LAND 5",
+		"Misc.Food Stores,Special Mrkts",
+		"SANKT-PETERBU",
+		"Россия",
+		"-3194.00",
+		"3194.00"
+	],
+	[
+		"12.09.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"14.09.2011",
+		"RUR",
+		"JSC RZD",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-6042.00",
+		"6042.00"
+	],
+	[
+		"17.09.2011",
+		"RUR",
+		"O KEY 12",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-3253.50",
+		"3253.50"
+	],
+	[
+		"21.09.2011",
+		"RUR",
+		"MAXIDOM,R2004072",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-2632.46",
+		"2632.46"
+	],
+	[
+		"23.09.2011",
+		"RUR",
+		"ESPRIT",
+		"Family Clothing Stores",
+		"ST. PETERSBUR",
+		"Россия",
+		"-3498.00",
+		"3498.00"
+	],
+	[
+		"23.09.2011",
+		"RUR",
+		"KF SPB ATMOSFERA E-C",
+		"Motion Picture Theatres",
+		"SANKT-PETERBU",
+		"Россия",
+		"-600.00",
+		"600.00"
+	],
+	[
+		"23.09.2011",
+		"RUR",
+		"MEXX  SHOP",
+		"Misc.Apparel & Access.Shops",
+		"SANKT-PETERS",
+		"Россия",
+		"-3399.00",
+		"3399.00"
+	],
+	[
+		"30.09.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"30.09.2011",
+		"RUR",
+		"WWW.RZD.RU",
+		"Passenger RailwaysX",
+		"MOSCOW",
+		"Россия",
+		"-6047.70",
+		"6047.70"
+	],
+	[
+		"01.10.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-14095.00",
+		"14095.00"
+	],
+	[
+		"07.10.2011",
+		"RUR",
+		"RUS JEWELRY HOUSE",
+		"Jewelry Stores,Watc.Clocks/Slv",
+		"ST. PETERSBUR",
+		"Россия",
+		"-25362.72",
+		"25362.72"
+	],
+	[
+		"08.10.2011",
+		"RUR",
+		"O KEY4",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-2987.00",
+		"2987.00"
+	],
+	[
+		"16.10.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-3891.60",
+		"3891.60"
+	],
+	[
+		"23.10.2011",
+		"RUR",
+		"ECCO",
+		"Shoe Stores",
+		"ST.-PETERSBUR",
+		"Россия",
+		"-12019.00",
+		"12019.00"
+	],
+	[
+		"23.10.2011",
+		"RUR",
+		"CAPITALSPORT NIKE SHO",
+		"Sporting Goods Stores",
+		"SANKT-PETERS",
+		"Россия",
+		"-5490.00",
+		"5490.00"
+	],
+	[
+		"23.10.2011",
+		"RUR",
+		"O KEY6",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-2210.20",
+		"2210.20"
+	],
+	[
+		"29.10.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-500.00",
+		"500.00"
+	],
+	[
+		"29.10.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-5265.11",
+		"5265.11"
+	],
+	[
+		"30.10.2011",
+		"RUR",
+		"LINDEX SHOP",
+		"Misc.Apparel & Access.Shops",
+		"SANKT-PETERS",
+		"Россия",
+		"-2795.00",
+		"2795.00"
+	],
+	[
+		"01.11.2011",
+		"EUR",
+		"DISAS FISH OY /TESJOKI",
+		"Misc.Food Stores,Special Mrkts",
+		"TESJOKI",
+		"Финляндия",
+		"-42.61",
+		"1823.71"
+	],
+	[
+		"01.11.2011",
+		"EUR",
+		"ABC Pernaja",
+		"Service Stations",
+		"PORVOO",
+		"Финляндия",
+		"-43.20",
+		"1861.92"
+	],
+	[
+		"02.11.2011",
+		"EUR",
+		"McDonalds Forum Katuta",
+		"Quick Payment Service",
+		"00100 HELSINK",
+		"Финляндия",
+		"-10.75",
+		"463.33"
+	],
+	[
+		"02.11.2011",
+		"EUR",
+		"Fazer Ravintolat Oy",
+		"Eating Places, Restaurants",
+		"Helsinki",
+		"Финляндия",
+		"-15.20",
+		"649.80"
+	],
+	[
+		"02.11.2011",
+		"EUR",
+		"MB VM Kamppi 11008",
+		"Women's Ready-to-wear stores",
+		"HELSINKI",
+		"Финляндия",
+		"-64.90",
+		"2774.48"
+	],
+	[
+		"02.11.2011",
+		"EUR",
+		"HENNES MAURITZ OY",
+		"Family Clothing Stores",
+		"HELSINKI",
+		"Финляндия",
+		"-9.95",
+		"425.36"
+	],
+	[
+		"02.11.2011",
+		"EUR",
+		"SEPPALA 006 FORUM",
+		"Family Clothing Stores",
+		"FORUM",
+		"Финляндия",
+		"-62.65",
+		"2700.22"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"ABC Pernaja",
+		"Service Stations",
+		"PORVOO",
+		"Финляндия",
+		"-18.43",
+		"787.88"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"QPark Finland OY",
+		"Autom.Parking Lots & Garages",
+		"Helsingfors",
+		"Финляндия",
+		"-6.00",
+		"256.50"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"Radisson Blu Royal Hel",
+		"Radisson Hotels",
+		"HELSINKI",
+		"Финляндия",
+		"-360.00",
+		"15390.00"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"Kultakeramiikka Oy",
+		"Gift,Card,Nvlty & Souvenir Sho",
+		"Porvoo",
+		"Финляндия",
+		"-27.80",
+		"1188.45"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"ABC Pernaja",
+		"Service Stations",
+		"PORVOO",
+		"Финляндия",
+		"-23.80",
+		"1017.45"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"Stockmann",
+		"Department Stores",
+		"00100 HELSINK",
+		"Финляндия",
+		"-248.90",
+		"10640.48"
+	],
+	[
+		"03.11.2011",
+		"EUR",
+		"KATUOS.PYSAKOINTIPALVE",
+		"Govnm.Service,not elsew.classi",
+		"Helsinki",
+		"Финляндия",
+		"-2.00",
+		"84.60"
+	],
+	[
+		"04.11.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-3797.25",
+		"3797.25"
+	],
+	[
+		"13.11.2011",
+		"RUR",
+		"O KEY6",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-4431.30",
+		"4431.30"
+	],
+	[
+		"19.11.2011",
+		"RUR",
+		"OBI-LAKHTA",
+		"Lawn & Garden Supp.Stores-Nurs",
+		"ST-PETERSBURG",
+		"Россия",
+		"-26531.14",
+		"26531.14"
+	],
+	[
+		"19.11.2011",
+		"RUR",
+		"MAXIDOM,R2004068",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-14936.08",
+		"14936.08"
+	],
+	[
+		"20.11.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-3788.22",
+		"3788.22"
+	],
+	[
+		"23.11.2011",
+		"RUR",
+		"NORTON *SOFTWARE",
+		"Computer Software Stores",
+		"NORTON.COM/CC",
+		"IRL",
+		"-1790.00",
+		"1790.00"
+	],
+	[
+		"24.11.2011",
+		"RUR",
+		"AVRORA AUTO ORBELI 2",
+		"Service Stations",
+		"ST.PETERBURG",
+		"Россия",
+		"-16016.10",
+		"16016.10"
+	],
+	[
+		"27.11.2011",
+		"RUR",
+		"OBI-LAKHTA",
+		"Lawn & Garden Supp.Stores-Nurs",
+		"ST-PETERSBURG",
+		"Россия",
+		"-8782.00",
+		"8782.00"
+	],
+	[
+		"27.11.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-3838.31",
+		"3838.31"
+	],
+	[
+		"29.11.2011",
+		"RUR",
+		"MAXIDOM,R2004071",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-12039.15",
+		"12039.15"
+	],
+	[
+		"29.11.2011",
+		"RUR",
+		"MAXIDOM,R2004071",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-8972.30",
+		"8972.30"
+	],
+	[
+		"04.12.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-4054.38",
+		"4054.38"
+	],
+	[
+		"04.12.2011",
+		"RUR",
+		"MAXIDOM,R2004072",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-1726.08",
+		"1726.08"
+	],
+	[
+		"05.12.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"05.12.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-1000.00",
+		"1000.00"
+	],
+	[
+		"05.12.2011",
+		"RUR",
+		"R-CONNECT SERV PAY",
+		"Misc. & Specialt.Retail Stores",
+		"MOSCOW",
+		"Россия",
+		"-700.00",
+		"700.00"
+	],
+	[
+		"09.12.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-89586.00",
+		"89586.00"
+	],
+	[
+		"09.12.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-33563.00",
+		"33563.00"
+	],
+	[
+		"10.12.2011",
+		"RUR",
+		"MAXIDOM,R2004072",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-2920.20",
+		"2920.20"
+	],
+	[
+		"11.12.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-5720.29",
+		"5720.29"
+	],
+	[
+		"12.12.2011",
+		"EUR",
+		"Alko Pyhtaa",
+		"Package Stores, Beer, wine & L",
+		"Pyhtaa",
+		"Финляндия",
+		"-27.37",
+		"1149.54"
+	],
+	[
+		"12.12.2011",
+		"EUR",
+		"RADISSON BLU SEASIDE H",
+		"Radisson Hotels",
+		"RDB SEASIDE",
+		"Финляндия",
+		"-62.83",
+		"2638.86"
+	],
+	[
+		"12.12.2011",
+		"EUR",
+		"ABC MAJAKKA",
+		"Service Stations",
+		"PYHTAA",
+		"Финляндия",
+		"-12.55",
+		"527.10"
+	],
+	[
+		"12.12.2011",
+		"EUR",
+		"Stockmann",
+		"Department Stores",
+		"00100 HELSINK",
+		"Финляндия",
+		"-428.70",
+		"18005.40"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"Fazer Ravintolat Oy",
+		"Eating Places, Restaurants",
+		"Vantaa",
+		"Финляндия",
+		"-4.60",
+		"193.20"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"Fazer Ravintolat Oy",
+		"Eating Places, Restaurants",
+		"Vantaa",
+		"Финляндия",
+		"-26.10",
+		"1096.20"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"LITTLE JESPER OY",
+		"Children's & Infants'Wear Stor",
+		"01510 VANTAA",
+		"Финляндия",
+		"-171.70",
+		"7237.16"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"Stadium Jumbo",
+		"Sports Apparel,Riding App.Stor",
+		"VANTAA",
+		"Финляндия",
+		"-139.60",
+		"5884.14"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"Radisson Blu Seaside",
+		"Radisson Hotels",
+		"Helsinki",
+		"Финляндия",
+		"-161.00",
+		"6786.15"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"TOP SPORT OY",
+		"Sporting Goods Stores",
+		"VANTAA",
+		"Финляндия",
+		"-209.70",
+		"8838.86"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"DISAS FISH OY /TESJOKI",
+		"Misc.Food Stores,Special Mrkts",
+		"TESJOKI",
+		"Финляндия",
+		"-4.00",
+		"168.60"
+	],
+	[
+		"13.12.2011",
+		"EUR",
+		"DISAS FISH OY /TESJOKI",
+		"Misc.Food Stores,Special Mrkts",
+		"TESJOKI",
+		"Финляндия",
+		"-82.03",
+		"3457.56"
+	],
+	[
+		"21.12.2011",
+		"RUR",
+		"O KEY6",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-4863.30",
+		"4863.30"
+	],
+	[
+		"21.12.2011",
+		"RUR",
+		"MAXIDOM,R2004072",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-9709.20",
+		"9709.20"
+	],
+	[
+		"24.12.2011",
+		"RUR",
+		"PRIZMA SHOP",
+		"Grocery Stores, Supermarkets",
+		"SANKT-PETERS",
+		"Россия",
+		"-4259.47",
+		"4259.47"
+	],
+	[
+		"26.12.2011",
+		"RUR",
+		"MAXIDOM,R2004072",
+		"Department Stores",
+		"ST.PETERSBURG",
+		"Россия",
+		"-4315.20",
+		"4315.20"
+	],
+	[
+		"27.12.2011",
+		"RUR",
+		"ULMART GRIBOEDOVA",
+		"Radio,Television, & Stero Sale",
+		"ST PETERSBURG",
+		"Россия",
+		"-10830.00",
+		"10830.00"
+	],
+	[
+		"27.12.2011",
+		"RUR",
+		"IP KLIMOV TOREZA 2",
+		"Drug Stores & Pharmacies",
+		"SAINT PETERSB",
+		"Россия",
+		"-1609.00",
+		"1609.00"
+	],
+	[
+		"28.12.2011",
+		"RUR",
+		"IKEA DOM 6 CASH LINE",
+		"Furn.Home Fur.& Equip.Stores,E",
+		"ST PETERSBURG",
+		"Россия",
+		"-9821.00",
+		"9821.00"
+	],
+	[
+		"31.12.2011",
+		"RUR",
+		"LAND,N8008903",
+		"Grocery Stores, Supermarkets",
+		"ST.PETERSBURG",
+		"Россия",
+		"-3190.00",
+		"3190.00"
+	],
+	[
+		"02.01.2012",
+		"EUR",
+		"K market Tahkon tahti",
+		"Grocery Stores, Supermarkets",
+		"TAHKOVUORI",
+		"Финляндия",
+		"-47.33",
+		"2032.35"
+	],
+	[
+		"02.01.2012",
+		"EUR",
+		"ABC JUVA",
+		"Grocery Stores, Supermarkets",
+		"JUVA",
+		"Финляндия",
+		"-20.40",
+		"875.98"
+	],
+	[
+		"03.01.2012",
+		"EUR",
+		"Rautia Nilsia",
+		"Department Stores",
+		"NILSIA",
+		"Финляндия",
+		"-143.60",
+		"6166.18"
+	],
+	[
+		"03.01.2012",
+		"EUR",
+		"K SUPERMARKET ARTOMAR",
+		"Department Stores",
+		"NILSIA",
+		"Финляндия",
+		"-117.79",
+		"5057.90"
+	],
+	[
+		"03.01.2012",
+		"EUR",
+		"Oy Skimac Ab - Tahko P",
+		"Equip.Rntl./Leas.Srv.Tool&Furn",
+		"73310 Tahkovu",
+		"Финляндия",
+		"-199.00",
+		"8545.06"
+	],
+	[
+		"04.01.2012",
+		"EUR",
+		"Noyrarenki Oy",
+		"Eating Places, Restaurants",
+		"Tahkovuori",
+		"Финляндия",
+		"-141.20",
+		"6063.13"
+	],
+	[
+		"04.01.2012",
+		"EUR",
+		"Oy Skimac Ab - Tahko T",
+		"Equip.Rntl./Leas.Srv.Tool&Furn",
+		"73310 Tahkovu",
+		"Финляндия",
+		"-30.00",
+		"1288.20"
+	],
+	[
+		"05.01.2012",
+		"EUR",
+		"Hesburger 10205 Nilsia",
+		"Eating Places, Restaurants",
+		"Nilsia",
+		"Финляндия",
+		"-4.90",
+		"210.41"
+	],
+	[
+		"05.01.2012",
+		"EUR",
+		"K SUPERMARKET ARTOMAR",
+		"Department Stores",
+		"NILSIA",
+		"Финляндия",
+		"-58.46",
+		"2510.27"
+	],
+	[
+		"05.01.2012",
+		"EUR",
+		"Hesburger 10205 Nilsia",
+		"Eating Places, Restaurants",
+		"Nilsia",
+		"Финляндия",
+		"-3.30",
+		"141.70"
+	],
+	[
+		"07.01.2012",
+		"EUR",
+		"K market Tahkon tahti",
+		"Grocery Stores, Supermarkets",
+		"TAHKOVUORI",
+		"Финляндия",
+		"-5.87",
+		"252.06"
+	],
+	[
+		"08.01.2012",
+		"EUR",
+		"K market Tahkon tahti",
+		"Grocery Stores, Supermarkets",
+		"TAHKOVUORI",
+		"Финляндия",
+		"-15.51",
+		"666.00"
+	]
+];
