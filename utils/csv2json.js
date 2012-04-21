@@ -26,18 +26,9 @@ csv()
             return;
         }
 
-        var idx = 0;
-        var all_empty = true;
-
-        for (idx = 0; idx < data.length; idx++) {
-            if (data[idx].trim() != "") {
-                all_empty = false;
-                break;
-            }
-        }
-
-        if (all_empty)
+        if (isEmpty(data)) {
             return;
+        }
 
         result.push(data);
     })
@@ -98,4 +89,17 @@ function parseHeader(data, index) {
         return true;
 
     return false;
+}
+
+function isEmpty(data) {
+    var all_empty = true;
+
+    for (var idx = 0; idx < data.length; idx++) {
+        if (data[idx].trim() != "") {
+            all_empty = false;
+            break;
+        }
+    }
+
+    return all_empty;
 }
