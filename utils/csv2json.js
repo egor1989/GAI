@@ -13,6 +13,7 @@ if (input_file == undefined || output_file == undefined) {
 }
 
 var result = [];
+var metadata = {};
 
 csv()
     .fromPath(__dirname + "/" + input_file, { delimiter: ';' })
@@ -20,6 +21,11 @@ csv()
         return data;
     })
     .on('data',function(data,index){
+
+        if (parseHeader(data, index)) {
+            return;
+        }
+
         var idx = 0;
         var all_empty = true;
 
@@ -41,10 +47,55 @@ csv()
         fs.open(output_file, "w+", function(err, fd) {
             if(err) throw err;
 
-            fs.write(fd, JSON.stringify(result, null, '\t'));
+            var toFile = {
+                metadata: metadata,
+                // last element is total, remove it
+                events: result.slice(0, result.length - 1)
+            };
+
+            fs.write(fd, JSON.stringify(toFile, null, '\t'));
             fs.close(fd);
         });
     })
     .on('error',function(error){
         console.log(error.message);
     });
+
+function parseHeader(data, index) {
+    if (index == 0) { // КАРТОЧКА УЧЕТА ДТП ...
+        metadata.name = data[0].trim();
+    }
+
+    if (index == 1) { // по месту совершения по Ленинградской области ...
+        metadata.where_country = data[0].trim();
+    }
+
+    if (index == 2) { // Федеральная дорога 11 ...
+        metadata.where_road = data[0].trim();
+    }
+
+    if (index == 3) { // за первый квартал 2012 года ..
+        metadata.date = data[0].trim();
+    }
+
+    if (index == 4) { // empty
+    }
+
+    if (index == 5) { // ;;;;;;;;;;;;Причины ;;;;;Посл.;;;
+    }
+
+    if (index == 6) { // ;;;;;;;;;;;;ДТП;;;;;;;в т.ч.  дети;
+    }
+
+    if (index == 7) { // main header
+    }
+
+    if (index == 8) { // 1 - 12 digit (??? odf parser?)
+    }
+
+    // Say that metadata
+    if (index <= 8)
+        return true;
+
+    return false;
+}
