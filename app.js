@@ -4,15 +4,10 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-
 var crypto = require('crypto');
 
+var routes = require('./routes');
 var users = require('./users');
-
-var path = require('./src/shipment/web/path');
-var shipment = require('./src/shipment/web/shipment');
-var country = require('./src/shipment/web/country');
 
 var app = module.exports = express.createServer();
 
@@ -37,7 +32,6 @@ app.configure('production', function() {
   app.use(express.errorHandler());
 });
 
-// simple auth
 // TODO: trying use everyauth modue
 function checkAuth(req, res, next) {
     var sess = req.cookies.tx_session;
@@ -122,18 +116,8 @@ app.all('*', function(req, res, next) {
 
 app.get('/', routes.index);
 
-app.get('/atm', routes.atm);
-
-app.get('/shipping', routes.countries);
-app.get('/shipping/detail', routes.shipping);
-
 // Api
-app.get('/v1/shipping/paths', path.get_group_by_path);
-app.get('/v1/shipping/shipments', shipment.get_shipments);
-app.get('/v1/shipping/country/period', country.get_time_period);
-
-// Main update from server side. May be use for manual updating?
-//app.post('/shipping/station/', station.update_station);
+// TODO: by what? date, region, road... or custom query?
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
