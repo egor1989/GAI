@@ -57,21 +57,6 @@ function loadScript(url) {
     });
 };
 
-// XXX: use object!
-// raiffeisen report format
-var name2idx = {
-    "date": 0,
-    "currency": 1,
-    "description": 2,
-    "seller": 3,
-    "city": 4,
-    "country": 5,
-    "operation": 6,
-    "bill": 7,
-    "id": 8,
-    "loc": 9
-};
-
 $(function() {
     $.getScript(tx_map.config.osm_script)
         .success(function() {
