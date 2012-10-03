@@ -16,7 +16,7 @@ var result = [];
 var metadata = {};
 
 csv()
-    .fromPath(__dirname + "/" + input_file, { delimiter: ';' })
+    .fromPath(/*__dirname + "/" +*/ input_file, { delimiter: ';' })
     .transform(function(data, index){
         return data;
     })
