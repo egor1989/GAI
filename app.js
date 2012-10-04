@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+var coffee = require('coffee-script');
 var express = require('express');
 var crypto = require('crypto');
 
