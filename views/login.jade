@@ -8,7 +8,7 @@ include head
      ul#errors
        - each error in errors
          li.error= error
-   form(action='/login', method='post')
+   form(action='/admin/login', method='post')
      #login
        label(for='user') Логин
        input(type='text', name='user')

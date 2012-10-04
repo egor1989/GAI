@@ -7,16 +7,21 @@ var coffee = require('coffee-script');
 var express = require('express');
 var crypto = require('crypto');
 
-var routes = require('./routes');
 var users = require('./users');
 
+
 var app = module.exports = express.createServer();
+
+var admin = require('./routes/admin')(app);
+var routes = require('./routes');
+console.log (admin.index);
 
 // Configuration
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.set('users', users);
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.methodOverride());
@@ -38,18 +43,18 @@ function checkAuth(req, res, next) {
     var sess = req.cookies.tx_session;
 
     if (sess == undefined)
-        return res.redirect('/login');
+        return res.redirect('/admin/login');
 
     for(var cnt = 0; cnt < users.length; cnt++)
         if (users[cnt].session == sess)
             return next();
 
-    return res.redirect('/login');
+    return res.redirect('/admin/login');
 }
 
 // Routes
 
-app.get('/logout', function(req, res, next) {
+app.get('/admin/logout', function(req, res, next) {
 
     res.clearCookie('TX_SESSION');
     res.clearCookie('LOGIN');
@@ -57,13 +62,13 @@ app.get('/logout', function(req, res, next) {
     res.redirect('/');
 });
 
-app.get('/login', function(req, res, next) {
+app.get('/admin/login', function(req, res, next) {
     res.render('login', {
         title: "Login"
     });
 });
 
-app.post('/login', function(req, res, next) {
+app.post('/admin/login', function(req, res, next) {
     var user = req.body.user;
     var pwd = req.body.pwd;
     var found = false;
@@ -100,12 +105,14 @@ app.post('/login', function(req, res, next) {
         httpOnly: true
     });
 
-    res.redirect('/');
+    res.redirect('/admin/index');
 });
+
+
 
 // Pages
 
-app.all('*', function(req, res, next) {
+app.all('^/admin*$', function(req, res, next) {
     if (/^\/vendor\//.test(req.path) ||
         /^\/css\//.test(req.path) ||
         /^\/js\//.test(req.path) ||
@@ -115,7 +122,10 @@ app.all('*', function(req, res, next) {
     return checkAuth(req, res, next);
 });
 
+
 app.get('/', routes.index);
+app.get('/admin/?(index)?', admin.index);
+
 
 // Api
 // TODO: by what? date, region, road... or custom query?
