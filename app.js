@@ -5,7 +5,6 @@
 
 var coffee = require('coffee-script');
 var express = require('express');
-var crypto = require('crypto');
 
 var users = require('./users');
 
@@ -14,7 +13,6 @@ var app = module.exports = express.createServer();
 
 var admin = require('./routes/admin')(app);
 var routes = require('./routes');
-console.log (admin.index);
 
 // Configuration
 
@@ -54,59 +52,9 @@ function checkAuth(req, res, next) {
 
 // Routes
 
-app.get('/admin/logout', function(req, res, next) {
-
-    res.clearCookie('TX_SESSION');
-    res.clearCookie('LOGIN');
-
-    res.redirect('/');
-});
-
-app.get('/admin/login', function(req, res, next) {
-    res.render('login', {
-        title: "Login"
-    });
-});
-
-app.post('/admin/login', function(req, res, next) {
-    var user = req.body.user;
-    var pwd = req.body.pwd;
-    var found = false;
-    var cnt = 0;
-
-    for (cnt = 0; cnt < users.length; cnt++) {
-        if (users[cnt].user == user && users[cnt].pwd == pwd) {
-            found = true;
-            break;
-        }
-    }
-
-    if (!found)
-        return res.render("login", {
-            title: "Login",
-            errors: [ "Неправильная пара логин/пароль" ]
-        });
-
-    var secret = "y8tHachup4aPhaKUThA3$USWa";
-
-    var shasum = crypto.createHash('sha1');
-    shasum.update(user + pwd + secret);
-
-    users[cnt].session = shasum.digest('hex');
-
-    var oneDay = 60*60*24*1000;
-
-    res.cookie('TX_SESSION', users[cnt].session, {
-        expires: new Date(Date.now() + oneDay),
-        httpOnly: true
-    });
-    res.cookie('LOGIN', users[cnt].user, {
-        expires: new Date(Date.now() + oneDay),
-        httpOnly: true
-    });
-
-    res.redirect('/admin/index');
-});
+app.get('/admin/logout', admin.logout);
+app.get('/admin/login', admin.login);
+app.post('/admin/login', admin.login);
 
 
 
