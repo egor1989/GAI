@@ -9,6 +9,8 @@ var crypto = require('crypto');
 var routes = require('./routes');
 var users = require('./users');
 
+var rest = require('./src/rtc/web/rest');
+
 var app = module.exports = express.createServer();
 
 // Configuration
@@ -111,13 +113,19 @@ app.all('*', function(req, res, next) {
         /^\/img\//.test(req.path))
         return next();
 
-    return checkAuth(req, res, next);
+    // Disable auth
+    return next();
+
+    //return checkAuth(req, res, next);
 });
 
 app.get('/', routes.index);
 
 // Api
 // TODO: by what? date, region, road... or custom query?
+
+app.get('/rest/all', rest.all);
+app.get('/rest/all/died', rest.allDied);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
