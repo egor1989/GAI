@@ -16,21 +16,27 @@ var result = [];
 var metadata = {};
 
 csv()
-    .fromPath(__dirname + "/" + input_file, { delimiter: ';' })
+    .fromPath(/*__dirname + "/" +*/ input_file, { delimiter: ';' })
     .transform(function(data, index){
         return data;
     })
     .on('data',function(data,index){
 
-        if (parseHeader(data, index)) {
-            return;
+	if (isEmpty(data)) {
+	    return;
         }
 
-        if (isEmpty(data)) {
-            return;
-        }
+	if (data[0].length < 2) {
+	    console.log("skip", data);
+	    return false;
+	}
 
-        result.push(data);
+	if (index < 3) {
+	    console.log("skip", data);
+	    return;
+	}
+
+        result.push(parseLine);
     })
     .on('end',function(count){
         console.log('Number of lines: '+count);
@@ -52,43 +58,23 @@ csv()
         console.log(error.message);
     });
 
-function parseHeader(data, index) {
-    if (index == 0) { // КАРТОЧКА УЧЕТА ДТП ...
-        metadata.name = data[0].trim();
-    }
+function parseLine(data, index) {
+    var result = {};
 
-    if (index == 1) { // по месту совершения по Ленинградской области ...
-        metadata.where_country = data[0].trim();
-    }
+    result.region = data[0].trim(); // Регион
 
-    if (index == 2) { // Федеральная дорога 11 ...
-        metadata.where_road = data[0].trim();
-    }
+    result.rtc_abs = data[1].trim();  // ДТП абс.
+    result.rtc_appg = data[2].trim(); // ДТП % к АППГ
 
-    if (index == 3) { // за первый квартал 2012 года ..
-        metadata.date = data[0].trim();
-    }
+    result.died_abs = data[3].trim(); // Погибло абс.
+    result.died_appg = data[4].trim(); // Погибло АППГ
 
-    if (index == 4) { // empty
-    }
+    result.injury_abs = data[5].trim(); // Ранено абс.
+    result.injury_appg = data[6].trim(); // Ранено АППГ
 
-    if (index == 5) { // ;;;;;;;;;;;;Причины ;;;;;Посл.;;;
-    }
+    result.weight = data[7].trim(); // Тяжесть послед. ДТП
 
-    if (index == 6) { // ;;;;;;;;;;;;ДТП;;;;;;;в т.ч.  дети;
-    }
-
-    if (index == 7) { // main header
-    }
-
-    if (index == 8) { // 1 - 12 digit (??? odf parser?)
-    }
-
-    // Say that metadata
-    if (index <= 8)
-        return true;
-
-    return false;
+    return result;
 }
 
 function isEmpty(data) {

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика ДТП</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style type="text/css" title="currentStyle">
+        @import "vendor/css/ui-darkness/jquery-ui-1.8.24.custom.css";
+        @import "css/index.css";
+        @import "css/timeline.css";
+    </style>
+
+    <script type="text/javascript" src="vendor/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="vendor/js/jquery-ui-1.8.24.custom.min.js"></script>
+    <script type="text/javascript" src="vendor/js/underscore-min.js"></script>
+    <script type="text/javascript" src="vendor/js/require.js"></script>
+    <script type="text/javascript" src="vendor/js/handlebars-1.0.rc.1.js"></script>
+    <script type="text/javascript" src="vendor/js/jquery.timelinr-0.9.51.js"></script>
+    <script type="text/javascript" src="vendor/js/highcharts.js"></script>
+    <script type="text/javascript" src="vendor/js/highcharts.gray.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+<div id="timeline">
+    <script id="timeLineDate" type="text/x-handlebars-template">
+        <li><a href="#{{date}}">{{date}}</a></li>
+    </script>
+    <ul id="dates">
+        <li><a href="#1900">1900</a></li>
+        <li><a href="#1930">1930</a></li>
+    </ul>
+    <script id="timeLineIssue" type="text/x-handlebars-template">
+        <li id="{{date}}">
+            <h1>{{date}}</h1>
+            {{{issue.html}}}
+        </li>
+    </script>
+    <ul id="issues">
+        <li id="1900">
+            <h1>1900</h1>
+        </li>
+        <li id="1930">
+            <h1>1930</h1>
+        </li>
+    </ul>
+</div>
+<div id="controls">
+    <a href="#" id="next">+</a> <!-- optional -->
+    <a href="#" id="prev">-</a> <!-- optional -->
+</div>
+<div id="switchView" class="tabs-bottom">
+    <ul>
+        <li><a href="#chartsView">Графики</a></li>
+        <li><a href="#mapView">Карта</a></li>
+    </ul>
+    <div id="chartsView">
+        <ul id="chartsList">
+            <li>
+                <div id="testChart"></div>
+            </li>
+            <li>
+                <div id="testChart1"></div>
+            </li>
+            <li>
+                <div id="testChart2"></div>
+            </li>
+            <li>
+                <div id="testChart3"></div>
+            </li>
+        </ul>
+    </div>
+    <div id="mapView"></div>
+</div>
+</body>
+</html>

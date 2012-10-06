@@ -34,7 +34,7 @@ mainWork();
 function mainWork() {
     // XXX: USE METADATA TOO
     // like a schema name? split by time period? or region location?
-    var data = require("./" + opts[0]);
+    var data = require(opts[0]);
 
     console.log("Starting import:\n\n", data.metadata, "\n");
 
