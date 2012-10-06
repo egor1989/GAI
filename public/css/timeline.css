@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: #222;
     font-family: Georgia, serif;
@@ -37,15 +42,22 @@ h2 {
 }
 
 #timeline {
-    width: 800px;
-    height: 350px;
+    width: 1000px;
+    height: 120px;
     overflow: hidden;
-    margin: 100px auto;
+    margin: auto;
     position: relative;
     background: url('../images/dot.gif') left 45px repeat-x;
 }
+
+#controls {
+    margin: auto;
+    width: 1000px;
+    position: relative;
+}
+
 #dates {
-    width: 800px;
+    width: 1000px;
     height: 60px;
     overflow: hidden;
 }
@@ -67,13 +79,13 @@ h2 {
 }
 
 #issues {
-    width: 800px;
-    height: 350px;
+    width: 1000px;
+    height: 120px;
     overflow: hidden;
 }
 #issues li {
-    width: 800px;
-    height: 350px;
+    width: 1000px;
+    height: 120px;
     list-style: none;
     float: left;
 }
@@ -104,8 +116,9 @@ h2 {
 }
 #issues li h1 {
     color: #ffcc00;
+    vertical-align: super;
     font-size: 48px;
-    margin: 20px 0;
+    margin: 0;
     text-shadow: #000 1px 1px 2px;
 }
 #issues li p {
@@ -150,11 +163,11 @@ h2 {
     background-position: 0 -76px;
 }
 #next {
-    right: 0;
+    right: 0px;
     background-image: url('../images/next.png');
 }
 #prev {
-    left: 0;
+    left: 0px;
     background-image: url('../images/prev.png');
 }
 #next.disabled,

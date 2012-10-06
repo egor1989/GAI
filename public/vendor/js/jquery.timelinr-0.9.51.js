@@ -74,9 +74,11 @@ jQuery.fn.timelinr = function(options){
 			// prev/next buttons now disappears on first/last issue
 			if( $(settings.issuesDiv+' li:first-child').hasClass(settings.issuesSelectedClass) ) {
 				$(settings.prevButton).fadeOut('fast');
+                $(settings.nextButton).fadeIn('slow');
 			} 
 			else if( $(settings.issuesDiv+' li:last-child').hasClass(settings.issuesSelectedClass) ) {
 				$(settings.nextButton).fadeOut('fast');
+                $(settings.prevButton).fadeIn('slow');
 			}
 			else {
 				$(settings.nextButton+','+settings.prevButton).fadeIn('slow');
@@ -130,15 +132,17 @@ jQuery.fn.timelinr = function(options){
 				}
 			}
 			// prev/next buttons now disappears on first/last issue
-			if( $(settings.issuesDiv+' li:first-child').hasClass(settings.issuesSelectedClass) ) {
-				$(settings.prevButton).fadeOut('fast');
-			} 
-			else if( $(settings.issuesDiv+' li:last-child').hasClass(settings.issuesSelectedClass) ) {
-				$(settings.nextButton).fadeOut('fast');
-			}
-			else {
-				$(settings.nextButton+','+settings.prevButton).fadeIn('slow');
-			}
+            if( $(settings.issuesDiv+' li:first-child').hasClass(settings.issuesSelectedClass) ) {
+                $(settings.prevButton).fadeOut('fast');
+                $(settings.nextButton).fadeIn('slow');
+            }
+            else if( $(settings.issuesDiv+' li:last-child').hasClass(settings.issuesSelectedClass) ) {
+                $(settings.nextButton).fadeOut('fast');
+                $(settings.prevButton).fadeIn('slow');
+            }
+            else {
+                $(settings.nextButton+','+settings.prevButton).fadeIn('slow');
+            }
 		});
 
 		$(settings.prevButton).click(function(event){
@@ -179,15 +183,17 @@ jQuery.fn.timelinr = function(options){
 				}
 			}
 			// prev/next buttons now disappears on first/last issue
-			if( $(settings.issuesDiv+' li:first-child').hasClass(settings.issuesSelectedClass) ) {
-				$(settings.prevButton).fadeOut('fast');
-			} 
-			else if( $(settings.issuesDiv+' li:last-child').hasClass(settings.issuesSelectedClass) ) {
-				$(settings.nextButton).fadeOut('fast');
-			}
-			else {
-				$(settings.nextButton+','+settings.prevButton).fadeIn('slow');
-			}
+            if( $(settings.issuesDiv+' li:first-child').hasClass(settings.issuesSelectedClass) ) {
+                $(settings.prevButton).fadeOut('fast');
+                $(settings.nextButton).fadeIn('slow');
+            }
+            else if( $(settings.issuesDiv+' li:last-child').hasClass(settings.issuesSelectedClass) ) {
+                $(settings.nextButton).fadeOut('fast');
+                $(settings.prevButton).fadeIn('slow');
+            }
+            else {
+                $(settings.nextButton+','+settings.prevButton).fadeIn('slow');
+            }
 		});
 		
 		// keyboard navigation, added since 0.9.1
