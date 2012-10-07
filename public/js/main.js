@@ -1,7 +1,8 @@
 $(function () {
     require([
         "js/timeline.js",
-        "js/charts.js"
+        "js/charts.js",
+        "js/map.js"
     ], function () {
         var charts = [],
             datasets = {
@@ -165,7 +166,28 @@ $(function () {
         timeLine.update();
 
         window.charts = charts;
+
+        $('#switchView').tabs( 'select', 1 );
+
+        $.getScript(tx_map.config.osm_script)
+            .success(function() {
+                loadScript("js/osm_heatmap.js");
+                loadScript("js/utils.js");
+
+                initMap();
+                tx_map.init_done = true;
+            });
     });
 });
+
+// XXX: getScript(), but we load sync
+function loadScript(url) {
+    $.ajax({
+        url : url,
+        dataType : "script",
+        async : false,
+        cache: false
+    });
+}
 
 

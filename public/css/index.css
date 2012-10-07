@@ -12,6 +12,12 @@
     height: 550px;
 }
 
+#map {
+    width: 100%;
+    height: 90%;
+    position: relative;
+}
+
 #chartsList {
     margin: auto;
     width: 820px;
