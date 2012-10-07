@@ -11,7 +11,7 @@ instructions: http://www.csslab.cl/2011/08/18/jquery-timelinr/
 
 jQuery.fn.timelinr = function(options){
 	// default plugin settings
-	settings = jQuery.extend({
+	var settings = jQuery.extend({
 		orientation: 				'horizontal',		// value: horizontal | vertical, default to horizontal
 		containerDiv: 				'#timeline',		// value: any HTML tag or #id, default to #timeline
 		datesDiv: 					'#dates',			// value: any HTML tag or #id, default to #dates
@@ -30,6 +30,7 @@ jQuery.fn.timelinr = function(options){
 		autoPlayDirection: 			'forward',			// value: forward | backward, default to forward
 		autoPlayPause: 				2000				// value: integer (1000 = 1 seg), default to 2000 (2segs)
 	}, options);
+    var selected = null;
 
 	$(function(){
 		// setting variables... many of them
@@ -91,7 +92,7 @@ jQuery.fn.timelinr = function(options){
 			} else if(settings.orientation == 'vertical') {
 				$(settings.datesDiv).animate({'marginTop':defaultPositionDates-(heightDate*currentIndex)},{queue:false, duration:'settings.datesSpeed'});
 			}
-			
+            timelineUpdate();
 		});
 
 		$(settings.nextButton).bind('click', function(event){
@@ -143,6 +144,7 @@ jQuery.fn.timelinr = function(options){
             else {
                 $(settings.nextButton+','+settings.prevButton).fadeIn('slow');
             }
+            timelineUpdate();
 		});
 
 		$(settings.prevButton).click(function(event){
@@ -194,6 +196,7 @@ jQuery.fn.timelinr = function(options){
             else {
                 $(settings.nextButton+','+settings.prevButton).fadeIn('slow');
             }
+            timelineUpdate();
 		});
 		
 		// keyboard navigation, added since 0.9.1
@@ -228,8 +231,12 @@ jQuery.fn.timelinr = function(options){
 		}
 		
 	});
-
+    function timelineUpdate() {
+        $(settings.containerDiv).trigger('update', $(settings.datesDiv).find('a.selected').text());
+    }
 };
+
+
 
 // autoPlay, added since 0.9.4
 function autoPlay(){

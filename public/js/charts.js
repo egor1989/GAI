@@ -1,9 +1,9 @@
-function createChart(chart) {
+function createChart(chart, series) {
     $('#' + chart).addClass('chart');
     return new Highcharts.Chart({
         chart: {
             renderTo: chart,
-            type: 'bar'
+            type: 'line'
         },
         title: {
             text: 'Fruit Consumption'
@@ -16,13 +16,7 @@ function createChart(chart) {
                 text: 'Fruit eaten'
             }
         },
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+        series: series
     });
 }
 

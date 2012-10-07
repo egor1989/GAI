@@ -1,15 +1,11 @@
-function TimeLine(id, dates, issues) {
+function TimeLine(id, dates, issues, changeCB) {
     this.$id = $(id);
     this.$dates = $(dates);
     this.$issues = $(issues);
     this.dateTempl = Handlebars.compile($("#timeLineDate").html());
     this.issueTempl = Handlebars.compile($("#timeLineIssue").html());
-    this.update();
-    /*this.$id.timelinr({
-        arrowKeys: 'true',
-        datesDiv: dates,
-        issuesDiv: issues
-    });*/
+//    this.update();
+    this.$id.on('update', changeCB);
 }
 
 TimeLine.prototype.addDate = function(date, issue) {
@@ -18,6 +14,7 @@ TimeLine.prototype.addDate = function(date, issue) {
     self.$issues.append(self.issueTempl({date: date, issue: issue}));
 }
 
+// поскольку плагин таймлайна - написан через ж, вызывать данный метод надо единожды
 TimeLine.prototype.update = function() {
     var self = this;
     this.$id.timelinr({
@@ -29,7 +26,6 @@ TimeLine.prototype.update = function() {
     });
 }
 
-
 TimeLine.prototype.activate = function(date) {
     var self = this;
     self.$dates.find('li>a[href="#' + date + '"]').click();
@@ -38,4 +34,8 @@ TimeLine.prototype.activate = function(date) {
 TimeLine.prototype.getActive = function() {
     var self = this;
     return self.$dates.find('a.selected').text();
+}
+
+TimeLine.prototype.onChange = function (event, data) {
+    console.log(data);
 }
