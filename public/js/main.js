@@ -99,7 +99,7 @@ $(function () {
                 chart.setSize(800, 400);
                 $.each(currCharts, function (i, val) {
                     if (val != chart) {
-                        val.setSize(260, 80);
+                        val.setSize(260, 100);
                     }
                 });
             }
