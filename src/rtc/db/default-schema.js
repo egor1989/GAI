@@ -32,11 +32,11 @@ RTC.add({
     // XXX: All causes is number (unique?)
     // maybe save ONLY ONE number as cause
     cause: {
-	driver: { type: Number },
-	ped: { type: Number },
-	road: { type: Number },
-	car: { type: Number },
-	other: { type: Number }
+	driver: { type: String },
+	ped: { type: String },
+	road: { type: String },
+	car: { type: String },
+	other: { type: String }
     },
     effect: {
 	people: {
