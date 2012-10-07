@@ -58,10 +58,25 @@ RTC.path("date").set(function(v) {
     var time = date_time[1].split(",");
 
     // XXX: temporary hack
+    if (time.length != 2)
+	time = date_time[1].split(".");
+
     var year = "20" + date[2];
     return new Date(year, date[1], date[0],
                     time[0], time[1]);
 });
+
+RTC.statics.getAll = function(cb) {
+    return this.find(cb);
+};
+
+RTC.statics.getAllDied = function(cb) {
+    return this
+	.where("effect.children.died").gt(0)
+	.or()
+	.where("effect.people.died").gt(0)
+	.run(cb);
+};
 
 mongoose.model('RTC', RTC);
 
