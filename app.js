@@ -8,6 +8,7 @@ var express = require('express');
 
 var users = require('./users');
 
+var rest = require('./src/rtc/web/rest');
 
 var app = module.exports = express.createServer();
 
@@ -34,8 +35,8 @@ app.configure('production', function() {
   app.use(express.errorHandler());
 });
 
-
 require('./routes/admin')(app);
+
 var routes = require('./routes');
 
 app.get('/', routes.index);
@@ -43,6 +44,9 @@ app.get('/', routes.index);
 
 // Api
 // TODO: by what? date, region, road... or custom query?
+
+app.get('/rest/all', rest.all);
+app.get('/rest/all/died', rest.allDied);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
