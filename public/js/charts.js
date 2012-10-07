@@ -4,13 +4,7 @@ function createChart(chart, title, series) {
     return new Highcharts.Chart({
         chart:{
             renderTo:chart,
-            type:'pie',
-            events:{
-                click:function (event, data) {
-                    var $container = $(this.container).parent();
-                    $container.parent().trigger('chartSelected', {chart:this, $container:$container });
-                }
-            }
+            type:'pie'
         },
         title:{
             text:title
@@ -33,7 +27,12 @@ function createChart(chart, title, series) {
             pointFormat:'<b>{point.y}</b> ({point.percentage}%)',
             percentageDecimals:1
         },
-        series:series
+        series:[
+            {
+                type:'pie',
+                data:series
+            }
+        ]
     });
 }
 
@@ -45,12 +44,6 @@ function createStackedChart(chart) {
         chart:{
             renderTo:chart,
             type:'column',
-            events:{
-                click:function (event, data) {
-                    var $container = $(this.container).parent();
-                    $container.parent().trigger('chartSelected', {chart:this, $container:$container });
-                }
-            }
         },
 
         title:{
@@ -108,3 +101,71 @@ function createStackedChart(chart) {
     });
 }
 
+
+function createAlcoChart(chart) {
+    $('#' + chart).addClass('chart');
+    return new Highcharts.Chart({
+        chart:{
+            renderTo:chart,
+            type:'line',
+            marginRight:130,
+            marginBottom:25
+        },
+        title:{
+            text:'Число пострадавших и погибших в ДТП',
+            x:-20 //center
+        },
+        subtitle:{
+            text:'Открытые данные',
+            x:-20
+        },
+        xAxis:{
+            categories:['2004', '2005', '2006', '2007', '2008', '2009',
+                '2010', '2011']
+        },
+        yAxis:{
+            title:{
+                text:'Человек'
+            },
+            plotLines:[
+                {
+                    value:0,
+                    width:1,
+                    color:'#808080'
+                }
+            ]
+        },
+        tooltip:{
+            formatter:function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    this.x + ': ' + this.y + '°C';
+            }
+        },
+        legend:{
+            layout:'vertical',
+            align:'right',
+            verticalAlign:'top',
+            x:-10,
+            y:150,
+            borderWidth:0
+        },
+        series:[
+            //{
+            //  name: 'Нарушения (пострадавшие)',
+            //  data: [164342, 180578, 187531, 195488, 183349, 173327, 169437, 170788]
+            //},
+            {
+                name:'Погибло в ДТП',
+                data:[27575, 27623, 26776, 27729, 24900, 23146, 22221, 23471]
+            },
+            //{
+            //name: 'Нетрезвые (пострадавшие)',
+            //data: [21569, 19567, 17017, 15593, 13611, 12327, 11845, 12252]
+            //},
+            {
+                name:'Погибло в ТП по вине нетрезвых водителей',
+                data:[3645, 3170, 2673, 2555, 2383, 2310, 1954, 2103]
+            }
+        ]
+    });
+}

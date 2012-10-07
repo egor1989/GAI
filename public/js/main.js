@@ -12,84 +12,6 @@ $(function () {
             dynamics = [],
             titles = ["Общее количество ДТП", "Кол-во ДТП на 10тыс. ед. ТС", "Общее число погибших и раненных", "Число пострадавших на 100 тыс. жителей"],
             datasets = {
-                2012:{
-                    chart0:[
-                        {
-                            type:'pie',
-                            data:[1, 0, 4]
-                        }
-                    ],
-                    chart1:[
-                        {
-                            type:'pie',
-                            data:[2, 4, 3]
-                        }
-                    ],
-                    chart2:[
-                        {
-                            type:'pie',
-                            data:[3, 2, 8]
-                        }
-                    ],
-                    chart3:[
-                        {
-                            type:'pie',
-                            data:[8, 5, 6]
-                        }
-                    ]
-                },
-                2011:{
-                    chart0:[
-                        {
-                            type:'pie',
-                            data:[5, 2, 3]
-                        }
-                    ],
-                    chart1:[
-                        {
-                            type:'pie',
-                            data:[3, 2, 1]
-                        }
-                    ],
-                    chart2:[
-                        {
-                            type:'pie',
-                            data:[1, 4, 5]
-                        }
-                    ],
-                    chart3:[
-                        {
-                            type:'pie',
-                            data:[2, 3, 1]
-                        }
-                    ]
-                },
-                2010:{
-                    chart0:[
-                        {
-                            type:'pie',
-                            data:[1, 9, 1]
-                        }
-                    ],
-                    chart1:[
-                        {
-                            type:'pie',
-                            data:[2, 1, 3]
-                        }
-                    ],
-                    chart2:[
-                        {
-                            type:'pie',
-                            data:[3, 1, 8]
-                        }
-                    ],
-                    chart3:[
-                        {
-                            type:'pie',
-                            data:[8, 2, 6]
-                        }
-                    ]
-                }
             };
 
         initMap();
@@ -113,45 +35,57 @@ $(function () {
             };
         });
 
-        for (var i = 0; i < 4; i++)
-            charts.push(createChart('testChart' + i, titles[i], datasets["2010"]['chart' + i]));
+
 
         dynamics.push(createStackedChart('dynamicsChart0'));
-        datasets['2012'] = getChartDataFromJSON(reportdata);
-
+        dynamics.push(createAlcoChart('dynamicsChart1'));
+        /*$.each(window.reportdata, function(i, val) {
+            datasets[i] = getChartDataFromJSON(val);
+        });*/
         var onTimeLineChange = function (event, data) {
-                for (var i = 0; i < 4; i++) {
-                    $.each(charts[i].series, function (j, val) {
+                        for (var i = 0; i < 4; i++) {
+                            $.each(charts[i].series, function (j, val) {
+                                val.setData(datasets[data]['chart' + i], false);
+                            });
+                            charts[i].redraw(true);
+                        }
+                        console.log(data);
+                    };
+        var timeLine = new TimeLine("#timeline", "#dates", "#issues", onTimeLineChange);
 
-                        if (data == '2012') {
-                            val.setData(datasets[data]['chart' + i], false);
-                        } else
-                            val.setData(datasets[data]['chart' + i][j].data, false);
-                    });
-                    charts[i].redraw(true);
-                }
-                console.log(data);
-            },
-            timeLine = new TimeLine("#timeline", "#dates", "#issues", onTimeLineChange);
+                //timeLine.addDate('2010');
 
-        for (var i = 2010; i < 2013; i++) {
+
+        for (var i = 2004; i < 2013; i++) {
+            datasets[i + ''] = getChartDataFromJSON(window.reportdata[i + '']);
             timeLine.addDate(i);
         }
-        //timeLine.addDate('2010');
+
+
+        for (var i = 0; i < 4; i++)
+            charts.push(createChart('testChart' + i, titles[i], datasets["2012"]['chart' + i]));
+
         timeLine.update();
         timeLine.activate('2012');
+
 
         window.charts = charts;
         // привязываем данные к листам
         $('#chartsList').data('charts', charts);
         $('#dynamicsList').data('charts', dynamics);
+        $.each(charts, function(i, val) {
+            $('#chartsList').children(':nth-child(' + (i + 1) +')').children().data('chart', val);
+            $('#dynamicsList').children(':nth-child(' + (i + 1) +')').children().data('chart', dynamics[i]);
+        });
 
-        $('.chartsList').on('chartSelected', function (event, data) {
-            var parent = data.$container.parent(),
-                currCharts = parent.parent().data('charts');
-
-            if (data.$container.hasClass('selected')) {
-                data.$container.removeClass('selected');
+        $('.chartsList').children().children().children().on('click', function () {
+            console.log('clicked');
+            var parent = $(this).parent().parent(),
+                currCharts = parent.parent().data('charts'),
+                $container = $(this).parent(),
+                chart = $container.data('chart');
+            if ($container.hasClass('selected')) {
+                $container.removeClass('selected');
                 parent.siblings().children().removeClass('notselected');
                 $.each(currCharts, function (i, val) {
                     val.setSize(400, 250);
@@ -160,10 +94,10 @@ $(function () {
             else {
                 parent.prependTo(parent.parent());
                 parent.siblings().children().removeClass('selected').addClass('notselected');
-                data.$container.removeClass('notselected').addClass('selected');
-                data.chart.setSize(800, 400);
+                $container.removeClass('notselected').addClass('selected');
+                chart.setSize(800, 400);
                 $.each(currCharts, function (i, val) {
-                    if (val != data.chart) {
+                    if (val != chart) {
                         val.setSize(260, 80);
                     }
                 });
@@ -202,7 +136,7 @@ function getChartDataFromJSON(json) {
     });
     return {
         chart0:addThreshHold(rtcTotal, 2, rtcTotalCount),
-        chart1:addThreshHold(rtcBy10k, 2, rtcBy10kCount),
+        chart1:addThreshHold(rtcBy10k, 1.2, rtcBy10kCount),
         chart2:addThreshHold(injury, 2, injuryCount),
         chart3:addThreshHold(vehicle, 2, vehicleCount)
     }
