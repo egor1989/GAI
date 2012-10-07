@@ -184,7 +184,7 @@ function initMap() {
 function fillMap()
 {
     this.features.forEach(function(feature) {
-        
+
         var regionStat = _.find(window.data2012.data, function(regData) {
             return regData.region == feature.attributes.name;
         });
@@ -208,7 +208,10 @@ function tooltipSelect(e) {
     }
     var htmlContent = '<span style="font-weight:bold">' + e.feature.attributes.name + '</span><hr/>';
     if (e.feature.attributes.data !== undefined)
-        htmlContent += "Всего ДТП: " + e.feature.attributes.data.rtc_total;
+    {
+        htmlContent += "Всего ДТП: " + e.feature.attributes.data.rtc_total + "<br />";
+        htmlContent += "Количество пострадавших: " + e.feature.attributes.data.injury_total;
+    }
     var center = e.feature.geometry.getBounds().getCenterLonLat();
     tooltipPopup = new OpenLayers.Popup("activetooltip",
         center,
