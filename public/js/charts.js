@@ -157,7 +157,7 @@ function createStackedChart(chart) {
             allowDecimals:false,
             min:0,
             title:{
-                text:'Number of fruits'
+                text:'Количество ДТП'
             }
         },
 
