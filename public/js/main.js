@@ -2,8 +2,12 @@ $(function () {
     require([
         "js/timeline.js",
         "js/charts.js",
-        "js/data.js"
+        "js/data.js",
+        "js/map.js",
+        "js/osm_heatmap.js",
+        "js/utils.js"
     ], function () {
+
         var charts = [],
             titles = ["Общее количество ДТП", "Кол-во ДТП на 10тыс. ед. ТС", "Общее число погибших и раненных", "Число пострадавших на 100 тыс. жителей"],
             datasets = {
@@ -87,7 +91,8 @@ $(function () {
                 }
             };
 
-
+        initMap();
+        tx_map.init_done = true;
         //timeLine.activate(2013);
         $('#switchView').tabs().removeClass('ui-widget ui-widget-content ui-corner-all');
         // приводим вкладки к нужному виду
@@ -157,7 +162,7 @@ $(function () {
                 });
             }
         });
-    });
+    })
 });
 
 function getChartDataFromJSON(json) {
@@ -211,8 +216,3 @@ function addThreshHold(data, percent, total) {
         return obj[1]
     });
 }
-
-function doResize() {
-
-}
-
