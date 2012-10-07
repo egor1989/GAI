@@ -27,18 +27,12 @@ csv()
 	    return;
         }
 
-	if (index == 0) {
-	    metadata.description = data[0];
-	    return;
-	}
-
-	if (index == 1) {
-	    metadata.timespan = data[0];
-	    return;
+	if (parseMetadata(data, index)) {
+	    return true;
 	}
 
 	if (filtrate(data, index)) {
-	    return;
+	    return true;
 	}
 
         result.push(parseLine(data));
@@ -62,9 +56,45 @@ csv()
         console.log(error.message);
     });
 
-function filtrate(data, index) {
-    if (input_file.match("Таблица 1")) {
+function parseMetadata(data, index) {
+    if (input_file.match("Таблица 1")
+	|| input_file.match("Таблица 2")
+	|| input_file.match("Водит")) {
+	if (index == 0) {
+	    metadata.description = data[0];
+	    return true;
+	}
 
+	if (index == 1) {
+	    metadata.timespan = data[0];
+	    return true;
+	}
+    }
+
+    if (input_file.match("Нетрез")
+	|| input_file.match("Юрид")) {
+	if (index == 0) {
+	    metadata.description = data[0];
+	    return true;
+	}
+
+	if (index == 1) {
+	    metadata.description += " " + data[0];
+	    return true;
+	}
+
+	if (index == 2) {
+	    metadata.timespan = data[0];
+	    return true;
+	}
+    }
+
+    return false;
+}
+
+function filtrate(data, index) {
+
+    if (input_file.match("Таблица 1")) {
 	if (data.length != 9) {
 	    console.log("skip !=9 ", data, index);
 	    return true;
@@ -84,7 +114,6 @@ function filtrate(data, index) {
     }
 
     if (input_file.match("Таблица 2")) {
-
 	if (data.length != 21) {
 	    console.log("skip !=21 ", data, index);
 	    return true;
@@ -103,7 +132,27 @@ function filtrate(data, index) {
 	return false;
     }
 
-    console.error("Format not supported");
+    if (input_file.match("Нетрез")
+	|| input_file.match("Водит")
+	|| input_file.match("Юрид")) {
+	if (data.length != 9) {
+	    console.log("skip !=9 ", data, index);
+	    return true;
+	}
+
+	if (data[0].length < 2) {
+	    console.log("skip len <2 ", data, index);
+	    return true;
+	}
+
+	if (index < 3) {
+	    console.log("skip idx < 3", data, index);
+	    return true;
+	}
+	return false;
+    }
+
+    console.error("Format not supported (filter)", input_file);
 
     process.exit(1);
 }
@@ -117,29 +166,60 @@ function parseLine(data, index) {
 	return table2Format(data);
     }
 
-    console.error("Format not supported");
+    if (input_file.match("Нетрез")) {
+	return drunkFormat(data);
+    }
+
+    if (input_file.match("Водит")) {
+	return pddFormat(data);
+    }
+
+    if (input_file.match("Юрид")) {
+	return jurFormat(data);
+    }
+
+    console.error("Format not supported", input_file);
 
     process.exit(1);
 }
 
-function table2Format(data) {
+function jurFormat(data) {
     var result = {};
 
-    metadata.type = "table2";
+    result = drunkFormat(data);
+    metadata.type = "juridical";
+
+    return result;
+}
+
+function pddFormat(data) {
+    var result = {};
+
+    result = drunkFormat(data);
+    metadata.type = "pdd";
+
+    return result;
+}
+
+function drunkFormat(data) {
+    var result = {};
+
+    metadata.type = "drunk";
 
     result.region = data[0]; // Регион
 
-    result.rtc_total = data[1];  // Всего ДТП
-    result.injury_total = data[2]; // Всего постардавших
+    result.rtc_abs = data[1];  // ДТП абс.
+    result.rtc_appg = data[2]; // ДТП % к АППГ
+    result.weight_unit = data[3]; // ДТП удельный вес
 
-    result.vehicle_total = data[3]; // Всего ед. ТС
-    result.population_total_k = data[4]; // Всего жителей тыс
 
-    result.rtc_by10kk_abs = data[5]; // Количество ДТП на 10 тыс. ед. ТС абс
-    result.rtc_by10kk_mean = data[6]; // Количество ДТП на 10 тыс. ед. ТС % от среднего по России
+    result.died_abs = data[4]; // Погибло абс.
+    result.died_appg = data[5]; // Погибло % к АППГ
 
-    result.injury_by100kk_abs = data[7]; // Число пострадавших на 100 тыс. жителей абс
-    result.injury_by100kk_mean = data[8]; // Число пострадавших на 100 тыс. жителей % от среднего по России
+    result.injury_abs = data[6]; // Ранено абс.
+    result.injury_appg = data[7]; // Ранено % к АППГ
+
+    result.unknown = data[8]; // Неизвестный параметр (в excel нет инфы)
 
     return result;
 }
