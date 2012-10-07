@@ -5,7 +5,8 @@ $(function () {
         "js/data.js",
         "js/map.js",
         "js/osm_heatmap.js",
-        "js/utils.js"
+        "js/utils.js",
+        "data.js"
     ], function () {
 
         var charts = [],
@@ -92,8 +93,6 @@ $(function () {
                 }
             };
 
-       loadScript("data.js");
-                //loadScript("js/momentumpan.js")
         initMap();        
         tx_map.init_done = true;
         //timeLine.activate(2013);

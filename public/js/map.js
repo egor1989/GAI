@@ -184,8 +184,7 @@ function initMap() {
 function fillMap()
 {
     this.features.forEach(function(feature) {
-
-        console.log(feature);
+        
         var regionStat = _.find(window.data2012.data, function(regData) {
             return regData.region == feature.attributes.name;
         });
