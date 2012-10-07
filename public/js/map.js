@@ -1,7 +1,6 @@
 var tx_map = {};
 
 tx_map.config = {
-    osm_script: "http://dev.openlayers.org/releases/OpenLayers-2.11/OpenLayers.js",
     // osm_tiles: "http://otile3.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.jpg",
     osm_tiles: "http://c.tile.openstreetmap.org/${z}/${x}/${y}.png",
 

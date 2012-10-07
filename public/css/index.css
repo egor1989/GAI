@@ -3,12 +3,22 @@
     height: 250px;
 }
 
+.chart.selected {
+    width: 800px;
+    height: 400px;
+}
+
+.chart.notselected {
+    width: 260px;
+    height: 80px;
+}
+
 #switchView {
     margin: auto;
     width: 870px;
 }
 
-#chartsView,#mapView {
+#chartsView,#mapView, #dynamicsView {
     height: 550px;
 }
 
@@ -18,13 +28,13 @@
     position: relative;
 }
 
-#chartsList {
+.chartsList {
     margin: auto;
     width: 820px;
     list-style-type: none;
 }
 
-#chartsList li {
+.chartsList li {
     display: inline;
     margin: 10px 0 0 10px;
     float: left;

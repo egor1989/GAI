@@ -18,6 +18,7 @@
     <script type="text/javascript" src="vendor/js/jquery.timelinr-0.9.51.js"></script>
     <script type="text/javascript" src="vendor/js/highcharts.js"></script>
     <script type="text/javascript" src="vendor/js/highcharts.gray.js"></script>
+    <script type="text/javascript" src="http://dev.openlayers.org/releases/OpenLayers-2.11/OpenLayers.js"></script>
 
     <script type="text/javascript" src="js/main.js"></script>
 </head>
@@ -45,9 +46,10 @@
     <ul>
         <li><a href="#chartsView">Графики</a></li>
         <li><a href="#mapView">Карта</a></li>
+        <li><a href="#dynamicsView">Динамика</a></li>
     </ul>
     <div id="chartsView">
-        <ul id="chartsList">
+        <ul id="chartsList" class="chartsList">
             <li>
                 <div id="testChart0"></div>
             </li>
@@ -69,6 +71,22 @@
             <input type="radio" id='subject' name="level" value="3" onclick="mapCountries.setVisibility(false);mapFederal.setVisibility(false);mapRegions.setVisibility(true);" checked="checked">Субъект федерации
         </div>
         <div id="map"></div>
+    </div>
+    <div id="dynamicsView">
+        <ul id="dynamicsList" class="chartsList">
+            <li>
+                <div id="dynamicsChart0"></div>
+            </li>
+            <li>
+                <div id="dynamicsChart1"></div>
+            </li>
+            <li>
+                <div id="dynamicsChart2"></div>
+            </li>
+            <li>
+                <div id="dynamicsChart3"></div>
+            </li>
+        </ul>
     </div>
 </div>
 </body>
