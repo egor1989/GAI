@@ -71,7 +71,7 @@ function initMap() {
             new OpenLayers.Control.Navigation(),
             new OpenLayers.Control.PanZoomBar(),
             new OpenLayers.Control.ScaleLine({ geodesic: true }),
-            new OpenLayers.Control.LayerSwitcher(),
+            new OpenLayers.Control.LayerSwitcher({mode:'radio'}),
             new OpenLayers.Control.MousePosition({
                 displayProjection : new OpenLayers.Projection("EPSG:4326")
             }),
@@ -97,14 +97,10 @@ function initMap() {
         new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection(
             "EPSG:900913")), zoom);
 
-    console.log("map created");
-
     /**
      * Repaints the map with new values.
      */
     var repaint = function(event){
-        console.log("repaint");
-        console.log(this.features);
         this.features.forEach(function(feature) {
             feature.style = {
                 fill: true,
@@ -113,10 +109,9 @@ function initMap() {
             };
         });
         this.redraw();
-        console.log("redraw");
     };
 
-    window.mapShapes = new OpenLayers.Layer.Vector("Регионы", {
+    window.mapRegions = new OpenLayers.Layer.Vector("Регионы", {
         protocol: new OpenLayers.Protocol.HTTP({
             url: "regions.json",
             format: new OpenLayers.Format.GeoJSON()
@@ -130,10 +125,10 @@ function initMap() {
         }
     });
 
-    map.addLayer(mapShapes);
+    map.addLayer(mapRegions);
 
     // create select for tooltips (OpenLayers Feature Tooltip)
-    var highlightCtrl = new OpenLayers.Control.SelectFeature(mapShapes, {
+    var highlightCtrl = new OpenLayers.Control.SelectFeature(mapRegions, {
         hover: true,
         highlightOnly: true,
         renderIntent: "temporary",
@@ -145,7 +140,7 @@ function initMap() {
     map.addControl(highlightCtrl);
     highlightCtrl.activate();
 
-    var selectCtrl = new OpenLayers.Control.SelectFeature(mapShapes,
+    var selectCtrl = new OpenLayers.Control.SelectFeature(mapRegions,
         {
             clickout: true, toggle: false,
             multiple: false,
@@ -156,9 +151,8 @@ function initMap() {
     map.addControl(selectCtrl);
     selectCtrl.activate();
 
-    mapShapes.events.on({
+    mapRegions.events.on({
         featureselected: function(e) {
-            console.log("selected");
 
             // Mark and save
             e.feature.data.oldFillColor = e.feature.style.fillColor;
@@ -168,7 +162,6 @@ function initMap() {
             e.feature.layer.drawFeature(e.feature);
         },
         featureunselected: function(e) {
-            console.log("unselected");
             e.feature.style.fillColor = e.feature.data.oldFillColor;
 
             e.feature.layer.drawFeature(e.feature);
@@ -178,9 +171,8 @@ function initMap() {
 }
 
 function tooltipSelect(e) {
-    console.log("hover");
 
-    var olds_feature = mapShapes.getFeaturesByAttribute("highlighted", true);
+    var olds_feature = mapRegions.getFeaturesByAttribute("highlighted", true);
 
     // Unmark and restore old
     olds_feature.forEach(function(of) {
@@ -243,7 +235,6 @@ function tooltipSelect(e) {
     e.feature.layer.drawFeature(e.feature);
 }
 function tooltipUnselect(e) {
-    console.log("unhover");
 
     e.feature.style.strokeColor = e.feature.data.oldColor;
     e.feature.style.strokeWidth = e.feature.data.oldWidth;
