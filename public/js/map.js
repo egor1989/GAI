@@ -60,20 +60,6 @@ function initMap() {
         new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection(
             "EPSG:900913")), zoom);
 
-    /**
-     * Repaints the map with new values.
-     */
-    var repaint = function(event){
-        this.features.forEach(function(feature) {
-            feature.style = {
-                fill: true,
-                fillColor: "red",//'#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)
-                fillOpacity : 0.7
-            };
-        });
-        this.redraw();
-    };
-
     window.mapRegions = new OpenLayers.Layer.Vector("Регионы", {
         protocol: new OpenLayers.Protocol.HTTP({
             url: "regions.json",
@@ -83,9 +69,6 @@ function initMap() {
         isBaseLayer:false,
         renderers:["SVG", "VML", "Canvas"],
         projection:new OpenLayers.Projection("EPSG:4326"),
-        eventListeners: {
-            "featuresadded": repaint
-        }
     });
 
     map.addLayer(mapRegions);
@@ -135,26 +118,6 @@ function initMap() {
 
 function tooltipSelect(e) {
 
-    var olds_feature = mapRegions.getFeaturesByAttribute("highlighted", true);
-
-    // Unmark and restore old
-    olds_feature.forEach(function(of) {
-        of.style.strokeColor = of.data.oldColor;
-        of.style.strokeWidth = of.data.oldWidth;
-        of.attributes.highlighted = false;
-
-        of.layer.drawFeature(of);
-    });
-
-    // Mark and save
-    e.feature.data.oldColor = e.feature.style.strokeColor;
-    e.feature.data.oldWidth = e.feature.style.strokeWidth;
-    e.feature.style.strokeColor = "white";
-    e.feature.style.strokeWidth = 3;
-    e.feature.attributes.highlighted = true;
-
-
-
     if (typeof e.feature.tooltip != 'undefined' && e.feature.tooltip != null) {
         return;
     }
@@ -199,8 +162,6 @@ function tooltipSelect(e) {
 }
 function tooltipUnselect(e) {
 
-    e.feature.style.strokeColor = e.feature.data.oldColor;
-    e.feature.style.strokeWidth = e.feature.data.oldWidth;
 
     if (typeof e.feature.tooltip !== 'undefined' && e.feature.tooltip != null) {
         map.removePopup(e.feature.tooltip);
