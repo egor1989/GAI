@@ -16,13 +16,12 @@ var result = [];
 var metadata = {};
 
 csv()
-    .fromPath(/*__dirname + "/" +*/ input_file, { delimiter: ';' })
+    .from.path(/*__dirname + "/" +*/ input_file, {
+	    delimiter: ';',
+	    trim: true
+	})
     .transform(function(data, index){
-        return data;
-    })
-    .on('data',function(data,index){
-
-        if (parseHeader(data, index)) {
+	if (parseHeader(data, index)) {
             return;
         }
 
@@ -33,7 +32,7 @@ csv()
         result.push(data);
     })
     .on('end',function(count){
-        console.log('Number of lines: '+count);
+        console.log('Number of lines: '+count, result.length);
 
         fs.open(output_file, "w+", function(err, fd) {
             if(err) throw err;
