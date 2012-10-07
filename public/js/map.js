@@ -33,11 +33,9 @@ function initMap() {
             new OpenLayers.Control.Navigation(),
             new OpenLayers.Control.PanZoomBar(),
             new OpenLayers.Control.ScaleLine({ geodesic: true }),
-            new OpenLayers.Control.LayerSwitcher({mode:'radio'}),
             new OpenLayers.Control.MousePosition({
                 displayProjection : new OpenLayers.Projection("EPSG:4326")
             }),
-            new OpenLayers.Control.OverviewMap(),
             new OpenLayers.Control.KeyboardDefaults(),
             new OpenLayers.Control.Navigation({
                 dragPanOptions: { enableKinetic: true }
@@ -66,14 +64,52 @@ function initMap() {
         }),
         strategies: [new OpenLayers.Strategy.Fixed()],
         isBaseLayer:false,
+        visibility: true,
         renderers:["SVG", "VML", "Canvas"],
         projection:new OpenLayers.Projection("EPSG:4326"),
+        eventListeners: {
+            "featuresadded": fillMap
+        }
     });
 
     map.addLayer(mapRegions);
 
+    window.mapFederal = new OpenLayers.Layer.Vector("Округа", {
+        protocol: new OpenLayers.Protocol.HTTP({
+            url: "federal.json",
+            format: new OpenLayers.Format.GeoJSON()
+        }),
+        strategies: [new OpenLayers.Strategy.Fixed()],
+        isBaseLayer:false,
+        visibility: false,
+        renderers:["SVG", "VML", "Canvas"],
+        projection:new OpenLayers.Projection("EPSG:4326"),
+        eventListeners: {
+            "featuresadded": fillMap
+        }
+    });
+
+    map.addLayer(mapFederal);
+
+    window.mapCountries = new OpenLayers.Layer.Vector("Россия", {
+        protocol: new OpenLayers.Protocol.HTTP({
+            url: "country.json",
+            format: new OpenLayers.Format.GeoJSON()
+        }),
+        strategies: [new OpenLayers.Strategy.Fixed()],
+        isBaseLayer:false,
+        visibility: false,
+        renderers:["SVG", "VML", "Canvas"],
+        projection:new OpenLayers.Projection("EPSG:4326"),
+        eventListeners: {
+            "featuresadded": fillMap
+        }
+    });
+
+    map.addLayer(mapCountries);
+
     // create select for tooltips (OpenLayers Feature Tooltip)
-    var highlightCtrl = new OpenLayers.Control.SelectFeature(mapRegions, {
+    var highlightCtrl = new OpenLayers.Control.SelectFeature([mapRegions, mapFederal, mapCountries], {
         hover: true,
         highlightOnly: true,
         renderIntent: "temporary",
@@ -83,9 +119,10 @@ function initMap() {
         }
     });
     map.addControl(highlightCtrl);
+    highlightCtrl.handlers.feature.stopDown = false;
     highlightCtrl.activate();
 
-    var selectCtrl = new OpenLayers.Control.SelectFeature(mapRegions,
+    var selectCtrl = new OpenLayers.Control.SelectFeature([mapRegions, mapFederal, mapCountries],
         {
             clickout: true, toggle: false,
             multiple: false,
@@ -94,25 +131,68 @@ function initMap() {
         }
     );
     map.addControl(selectCtrl);
+    selectCtrl.handlers.feature.stopDown = false;
     selectCtrl.activate();
+
+    var markFeature = function(feature) {
+        // Mark and save
+        console.log(feature);
+
+        feature.style.fillColor = "blue";
+        feature.attributes.selected = true;
+
+        feature.layer.drawFeature(feature);
+    };
+
+    var unmarkFeature = function(feature) {
+        console.log(feature);
+
+        feature.style.fillColor = feature.data.oldFillColor;
+
+        feature.layer.drawFeature(feature);
+    };
 
     mapRegions.events.on({
         featureselected: function(e) {
-
-            // Mark and save
-            e.feature.data.oldFillColor = e.feature.style.fillColor;
-            e.feature.style.fillColor = "blue";
-            e.feature.attributes.selected = true;
-
-            e.feature.layer.drawFeature(e.feature);
+            markFeature(e.feature);
         },
         featureunselected: function(e) {
-            e.feature.style.fillColor = e.feature.data.oldFillColor;
-
-            e.feature.layer.drawFeature(e.feature);
+            unmarkFeature(e.feature);
         }
     });
 
+    mapCountries.events.on({
+        featureselected: function(e) {
+            markFeature(e.feature);
+        },
+        featureunselected: function(e) {
+            unmarkFeature(e.feature);
+        }
+    });
+
+    mapFederal.events.on({
+        featureselected: function(e) {
+            markFeature(e.feature);
+        },
+        featureunselected: function(e) {
+            unmarkFeature(e.feature);
+        }
+    });
+
+}
+
+function fillMap()
+{
+    this.features.forEach(function(feature) {
+
+        var regionStat = _.find(window.data2012.data, function(regData) {
+            return regData.region == feature.attributes.name;
+        });
+
+        if (regionStat !== undefined)
+            feature.attributes.data = regionStat;
+
+    });
 }
 
 function tooltipSelect(e) {
@@ -127,6 +207,11 @@ function tooltipSelect(e) {
         tooltipPopup = null;
     }
     var htmlContent = '<span style="font-weight:bold">' + e.feature.attributes.name + '</span><hr/>';
+    if (e.feature.attributes.data !== undefined)
+    {
+        htmlContent += "Всего ДТП: " + e.feature.attributes.data.rtc_total + "<br />";
+        htmlContent += "Количество пострадавших: " + e.feature.attributes.data.injury_total;
+    }
     var center = e.feature.geometry.getBounds().getCenterLonLat();
     tooltipPopup = new OpenLayers.Popup("activetooltip",
         center,
@@ -160,7 +245,6 @@ function tooltipSelect(e) {
     e.feature.layer.drawFeature(e.feature);
 }
 function tooltipUnselect(e) {
-
 
     if (typeof e.feature.tooltip !== 'undefined' && e.feature.tooltip != null) {
         map.removePopup(e.feature.tooltip);
