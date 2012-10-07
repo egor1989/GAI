@@ -12,8 +12,14 @@ $(function () {
         var charts = [],
             dynamics = [],
             titles = ["Общее количество ДТП", "Кол-во ДТП на 10тыс. ед. ТС", "Общее число погибших и раненных", "Число пострадавших на 100 тыс. жителей"],
-            datasets = {
-            };
+            datasets = {},
+            colors = {};
+
+        $.each(reportdata['2012'].data, function(i, val) {
+            colors[val.region] = '#'+Math.floor(Math.random()*16777215).toString(16);
+        });
+        colors["Другие"] = '#'+Math.floor(Math.random()*16777215).toString(16);
+
 
         initMap();
         tx_map.init_done = true;
@@ -58,7 +64,7 @@ $(function () {
 
 
         for (var i = 2004; i < 2013; i++) {
-            datasets[i + ''] = getChartDataFromJSON(window.reportdata[i + '']);
+            datasets[i + ''] = getChartDataFromJSON(window.reportdata[i + ''], colors);
             timeLine.addDate(i);
         }
 
@@ -107,7 +113,7 @@ $(function () {
     })
 });
 
-function getChartDataFromJSON(json) {
+function getChartDataFromJSON(json, colors) {
     var rtcTotal = [],
         rtcTotalCount = 0,
         rtcBy10k = [],
@@ -123,10 +129,10 @@ function getChartDataFromJSON(json) {
             injuryCount += parseInt(val.injury_total);
             vehicleCount += parseInt(val.vehicle_total);
 
-            rtcTotal.push([val.region, parseInt(val.rtc_total)]);
-            rtcBy10k.push([val.region, parseInt(val.rtc_by10kk_abs)]);
-            injury.push([val.region, parseInt(val.injury_total)]);
-            vehicle.push([val.region, parseInt(val.vehicle_total)]);
+            rtcTotal.push({color:colors[val.region], name:val.region, y:parseInt(val.rtc_total)});
+            rtcBy10k.push({color:colors[val.region], name:val.region, y:parseInt(val.rtc_by10kk_abs)});
+            injury.push({color:colors[val.region], name:val.region, y:parseInt(val.injury_total)});
+            vehicle.push({color:colors[val.region], name:val.region, y:parseInt(val.vehicle_total)});
         }
         /*else {
          rtcTotalCount = parseInt(val.rtc_total);
@@ -136,25 +142,25 @@ function getChartDataFromJSON(json) {
          }*/
     });
     return {
-        chart0:addThreshHold(rtcTotal, 2, rtcTotalCount),
-        chart1:addThreshHold(rtcBy10k, 1.2, rtcBy10kCount),
-        chart2:addThreshHold(injury, 2, injuryCount),
-        chart3:addThreshHold(vehicle, 2, vehicleCount)
+        chart0:addThreshHold(rtcTotal, 2, rtcTotalCount, colors),
+        chart1:addThreshHold(rtcBy10k, 1.2, rtcBy10kCount, colors),
+        chart2:addThreshHold(injury, 2, injuryCount, colors),
+        chart3:addThreshHold(vehicle, 2, vehicleCount, colors)
     }
 }
 
-function addThreshHold(data, percent, total) {
+function addThreshHold(data, percent, total, colors) {
     var newData = [],
-        others = ['Другие', 0];
+        others = {name:'Другие', y:0, color:colors['Другие']};
     $.each(data, function (i, val) {
-        if (val[1] * 100 / total < percent) {
-            others[1] += val[1];
+        if (val.y * 100 / total < percent) {
+            others.y += val.y;
         }
         else
             newData.push(val);
     });
     newData.push(others);
     return _.sortBy(newData, function (obj) {
-        return obj[1]
+        return obj.data
     });
 }
