@@ -173,12 +173,19 @@ $(function () {
             .success(function() {
                 loadScript("js/osm_heatmap.js");
                 loadScript("js/utils.js");
+                loadScript("data.js");
+                //loadScript("js/momentumpan.js")
 
                 initMap();
                 tx_map.init_done = true;
+
             });
+
+
     });
 });
+
+
 
 // XXX: getScript(), but we load sync
 function loadScript(url) {
