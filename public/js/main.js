@@ -9,6 +9,7 @@ $(function () {
     ], function () {
 
         var charts = [],
+            dynamics = [],
             titles = ["Общее количество ДТП", "Кол-во ДТП на 10тыс. ед. ТС", "Общее число погибших и раненных", "Число пострадавших на 100 тыс. жителей"],
             datasets = {
                 2012:{
@@ -115,6 +116,7 @@ $(function () {
         for (var i = 0; i < 4; i++)
             charts.push(createChart('testChart' + i, titles[i], datasets["2010"]['chart' + i]));
 
+        dynamics.push(createStackedChart('dynamicsChart0'));
         datasets['2012'] = getChartDataFromJSON(reportdata);
 
         var onTimeLineChange = function (event, data) {
@@ -140,22 +142,27 @@ $(function () {
         timeLine.activate('2012');
 
         window.charts = charts;
+        // привязываем данные к листам
+        $('#chartsList').data('charts', charts);
+        $('#dynamicsList').data('charts', dynamics);
 
-        $('#chartsList').on('chartSelected', function (event, data) {
+        $('.chartsList').on('chartSelected', function (event, data) {
+            var parent = data.$container.parent(),
+                currCharts = parent.parent().data('charts');
+
             if (data.$container.hasClass('selected')) {
                 data.$container.removeClass('selected');
-                data.$container.parent().siblings().children().removeClass('notselected');
-                $.each(charts, function (i, val) {
+                parent.siblings().children().removeClass('notselected');
+                $.each(currCharts, function (i, val) {
                     val.setSize(400, 250);
                 });
             }
             else {
-                var parent = data.$container.parent();
                 parent.prependTo(parent.parent());
                 parent.siblings().children().removeClass('selected').addClass('notselected');
                 data.$container.removeClass('notselected').addClass('selected');
                 data.chart.setSize(800, 400);
-                $.each(charts, function (i, val) {
+                $.each(currCharts, function (i, val) {
                     if (val != data.chart) {
                         val.setSize(260, 80);
                     }

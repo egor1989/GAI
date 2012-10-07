@@ -28,13 +28,13 @@
     position: relative;
 }
 
-#chartsList {
+.chartsList {
     margin: auto;
     width: 820px;
     list-style-type: none;
 }
 
-#chartsList li {
+.chartsList li {
     display: inline;
     margin: 10px 0 0 10px;
     float: left;
