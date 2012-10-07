@@ -165,11 +165,13 @@ function initMap() {
             e.feature.style.fillColor = "blue";
             e.feature.attributes.selected = true;
 
-            mapShapes.redraw();
+            e.feature.layer.drawFeature(e.feature);
         },
         featureunselected: function(e) {
             console.log("unselected");
             e.feature.style.fillColor = e.feature.data.oldFillColor;
+
+            e.feature.layer.drawFeature(e.feature);
         }
     });
 
@@ -185,6 +187,8 @@ function tooltipSelect(e) {
         of.style.strokeColor = of.data.oldColor;
         of.style.strokeWidth = of.data.oldWidth;
         of.attributes.highlighted = false;
+
+        of.layer.drawFeature(of);
     });
 
     // Mark and save
@@ -193,6 +197,8 @@ function tooltipSelect(e) {
     e.feature.style.strokeColor = "white";
     e.feature.style.strokeWidth = 3;
     e.feature.attributes.highlighted = true;
+
+
 
     if (typeof e.feature.tooltip != 'undefined' && e.feature.tooltip != null) {
         return;
@@ -234,7 +240,7 @@ function tooltipSelect(e) {
     e.feature.tooltip = tooltipPopup;
     map.addPopup(e.feature.tooltip);
 
-    mapShapes.redraw();
+    e.feature.layer.drawFeature(e.feature);
 }
 function tooltipUnselect(e) {
     console.log("unhover");
@@ -249,7 +255,7 @@ function tooltipUnselect(e) {
         e.feature.tooltip = null;
         tooltipPopup = null;
     }
-    mapShapes.redraw();
+    e.feature.layer.drawFeature(e.feature);
 }
 
 function putOnMap(opts) {
