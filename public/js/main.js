@@ -5,7 +5,8 @@ $(function () {
         "js/data.js",
         "js/map.js",
         "js/osm_heatmap.js",
-        "js/utils.js"
+        "js/utils.js",
+        "data.js"
     ], function () {
 
         var charts = [],
@@ -92,7 +93,7 @@ $(function () {
                 }
             };
 
-        initMap();
+        initMap();        
         tx_map.init_done = true;
         //timeLine.activate(2013);
         $('#switchView').tabs().removeClass('ui-widget ui-widget-content ui-corner-all');
@@ -149,6 +150,7 @@ $(function () {
         $('.chartsList').on('chartSelected', function (event, data) {
             var parent = data.$container.parent(),
                 currCharts = parent.parent().data('charts');
+                
 
             if (data.$container.hasClass('selected')) {
                 data.$container.removeClass('selected');
@@ -168,9 +170,12 @@ $(function () {
                     }
                 });
             }
+
         });
     })
 });
+
+
 
 function getChartDataFromJSON(json) {
     var rtcTotal = [],
