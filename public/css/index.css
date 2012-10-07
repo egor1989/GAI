@@ -3,12 +3,22 @@
     height: 250px;
 }
 
+.chart.selected {
+    width: 800px;
+    height: 400px;
+}
+
+.chart.notselected {
+    width: 260px;
+    height: 80px;
+}
+
 #switchView {
     margin: auto;
     width: 870px;
 }
 
-#chartsView,#mapView {
+#chartsView,#mapView, #dynamicsView {
     height: 550px;
 }
 
