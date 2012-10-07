@@ -5,7 +5,8 @@ $(function () {
         "js/data.js",
         "js/map.js",
         "js/osm_heatmap.js",
-        "js/utils.js"
+        "js/utils.js",
+        "data.js"
     ], function () {
 
         var charts = [],
