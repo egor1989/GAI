@@ -12,7 +12,7 @@ tx_map.config = {
         lat: 45.927,
         lon: 55.316
     },
-    default_zoom: 4,
+    default_zoom: 3,
     found_tx_marker: "img/green8x8.png",
     notfound_tx_marker: "img/red8x8.png"
 };
@@ -197,9 +197,6 @@ function fillMap()
 
 function tooltipSelect(e) {
 
-    if (typeof e.feature.tooltip != 'undefined' && e.feature.tooltip != null) {
-        return;
-    }
     // remove tooltip if exists
     if (tooltipPopup != null) {
         map.removePopup(tooltipPopup);
@@ -239,21 +236,14 @@ function tooltipSelect(e) {
         'padding': '8px',
         'color': '#fff'
     });
-    e.feature.tooltip = tooltipPopup;
-    map.addPopup(e.feature.tooltip);
+    map.addPopup(tooltipPopup);
 
-    e.feature.layer.drawFeature(e.feature);
 }
 function tooltipUnselect(e) {
 
-    if (typeof e.feature.tooltip !== 'undefined' && e.feature.tooltip != null) {
-        map.removePopup(e.feature.tooltip);
+        map.removePopup(tooltipPopup);
         // fix: map property
-
-        e.feature.tooltip = null;
         tooltipPopup = null;
-    }
-    e.feature.layer.drawFeature(e.feature);
 }
 
 function putOnMap(opts) {
