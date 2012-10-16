@@ -66,9 +66,9 @@
     </div>
     <div id="mapView">
         <div id="switcher">
-            <input type="radio" id='country' name="level" value="1" onclick="mapCountries.setVisibility(true);mapFederal.setVisibility(false);mapRegions.setVisibility(false);">Россия
-            <input type="radio" id='federal' name="level" value="2" onclick="mapCountries.setVisibility(false);mapFederal.setVisibility(true);mapRegions.setVisibility(false);">Федеральный округ
-            <input type="radio" id='subject' name="level" value="3" onclick="mapCountries.setVisibility(false);mapFederal.setVisibility(false);mapRegions.setVisibility(true);" checked="checked">Субъект федерации
+            <input type="radio" id='country' name="level" value="1" onclick="Map.country_layer.setVisibility(true);Map.federal_layer.setVisibility(false);Map.region_layer.setVisibility(false);" checked="checked">Россия
+            <input type="radio" id='federal' name="level" value="2" onclick="Map.country_layer.setVisibility(false);Map.federal_layer.setVisibility(true);Map.region_layer.setVisibility(false);">Федеральный округ
+            <input type="radio" id='subject' name="level" value="3" onclick="Map.country_layer.setVisibility(false);Map.federal_layer.setVisibility(false);Map.region_layer.setVisibility(true);" >Субъект федерации
         </div>
         <div id="map"></div>
     </div>

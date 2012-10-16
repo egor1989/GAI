@@ -3,10 +3,15 @@ $(function () {
         "js/timeline.js",
         "js/charts.js",
         "js/data.js",
+        "js/i18n.ru.js",
+        "js/config.js",
         "js/map.js",
+        "js/geo/country.js",
+        "js/geo/federal.js",
+        "js/geo/regions.js",
         "js/osm_heatmap.js",
         "js/utils.js",
-        "data.js"
+        "js/data/data.js"
     ], function () {
 
         var charts = [],
@@ -22,7 +27,6 @@ $(function () {
 
 
         initMap();
-        tx_map.init_done = true;
         //timeLine.activate(2013);
         $('#switchView').tabs().removeClass('ui-widget ui-widget-content ui-corner-all');
         // приводим вкладки к нужному виду
