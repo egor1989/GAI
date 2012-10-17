@@ -8,7 +8,7 @@ function fillMap(features)
     features.forEach(function(feature) {
 
         var regionStat = _.find(window.data2012.data, function(regData) {
-            return regData.region == feature.attributes.name;
+            return regData.region == feature.attributes.region;
         });
 
         if (regionStat !== undefined)
@@ -90,8 +90,7 @@ BaseMap.prototype.createMap = function(lat, lon, zoom) {
         isBaseLayer:false,
         visibility: false,
         transparent: true,
-        renderers:["SVG", "VML", "Canvas"],
-        projection:new OpenLayers.Projection("EPSG:4326")
+        renderers:["SVG", "VML", "Canvas"]
     });
     map.addLayer(region_layer);
 
@@ -112,7 +111,7 @@ BaseMap.prototype.createMap = function(lat, lon, zoom) {
     fillMap(countryFeatures);
     var federalFeatures = geoJSON.read(rus_federal);
     fillMap(federalFeatures);
-    var regionFeatures = geoJSON.read(rus_regions);
+    var regionFeatures = geoJSON.read(regions);
     fillMap(regionFeatures);
 
     country_layer.strategies = [new OpenLayers.Strategy.Fixed()];
@@ -207,7 +206,7 @@ BaseMap.prototype.tooltipSelect = function(self) {
 
         var map = self.map;
 
-        var htmlContent = '<span style="font-weight:bold">' + e.feature.attributes.name + '</span><hr/>';
+        var htmlContent = '<span style="font-weight:bold">' + e.feature.attributes.region + '</span><hr/>';
         if (e.feature.attributes.data !== undefined)
         {
             htmlContent += "Всего ДТП: " + e.feature.attributes.data.rtc_total + "<br />";
