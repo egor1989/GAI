@@ -54,14 +54,23 @@ $(function () {
             datasets[i] = getChartDataFromJSON(val);
         });*/
         var onTimeLineChange = function (event, data) {
-                        for (var i = 0; i < 4; i++) {
-                            $.each(charts[i].series, function (j, val) {
-                                val.setData(datasets[data]['chart' + i], false);
-                            });
-                            charts[i].redraw(true);
-                        }
-                        console.log(data);
-                    };
+            console.log(data);
+            /*
+             * Charts update
+             */
+            for (var i = 0; i < 4; i++) {
+                $.each(charts[i].series, function (j, val) {
+                    val.setData(datasets[data]['chart' + i], false);
+                });
+                charts[i].redraw(true);
+            }
+
+            /*
+             * Map update
+             */
+            Map.fillStatistic(window.reportdata[data]);
+
+        };
         var timeLine = new TimeLine("#timeline", "#dates", "#issues", onTimeLineChange);
 
                 //timeLine.addDate('2010');

@@ -3,20 +3,6 @@ function initMap() {
     window.Map = new BaseMap("map", TXConfig, i18n);
 }
 
-function fillMap(features)
-{
-    features.forEach(function(feature) {
-
-        var regionStat = _.find(window.data2012.data, function(regData) {
-            return regData.region == feature.attributes.region;
-        });
-
-        if (regionStat !== undefined)
-            feature.attributes.data = regionStat;
-
-    });
-}
-
 function BaseMap(id, config, i18n) {
     this.tileUrl = config.osm_tile_url;
     this.zoomAvaliable = config.osm_available_zoom;
@@ -28,6 +14,28 @@ function BaseMap(id, config, i18n) {
         lon = config.osm_center_lon,
         zoom = config.osm_initial_zoom;
     this.createMap(lat, lon, zoom);
+}
+
+BaseMap.prototype.fillStatistic = function(data)
+{
+    var self = this;
+    var refreshStat = function(layer) {
+        layer.features.forEach(function(feature) {
+
+            var regionStat = _.find(data.data, function(regData) {
+                return regData.region == feature.attributes.region;
+            });
+
+            if (regionStat !== undefined)
+                feature.attributes.data = regionStat;
+        });
+        layer.redraw();
+    };
+
+    refreshStat(self.country_layer);
+    refreshStat(self.federal_layer);
+    refreshStat(self.region_layer);
+
 }
 
 BaseMap.prototype.createMap = function(lat, lon, zoom) {
@@ -108,11 +116,8 @@ BaseMap.prototype.createMap = function(lat, lon, zoom) {
     });
 
     var countryFeatures = geoJSON.read(russia);
-    fillMap(countryFeatures);
     var federalFeatures = geoJSON.read(rus_federal);
-    fillMap(federalFeatures);
     var regionFeatures = geoJSON.read(regions);
-    fillMap(regionFeatures);
 
     country_layer.strategies = [new OpenLayers.Strategy.Fixed()];
     country_layer.addFeatures(countryFeatures);
