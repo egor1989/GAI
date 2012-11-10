@@ -136,7 +136,7 @@ function getChartDataFromJSON(json, colors) {
         vehicle = [],
         vehicleCount = 0;
     $.each(json.data, function (i, val) {
-        if (val.region != "Российская Федерация") {
+        if (val.region != "Российская Федерация" && val.region.indexOf("округ") == -1) {
             rtcTotalCount += parseInt(val.rtc_total);
             rtcBy10kCount += parseInt(val.rtc_by10kk_abs);
             injuryCount += parseInt(val.injury_total);

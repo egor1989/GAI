@@ -8,8 +8,8 @@ window.TXConfig = {
     osm_nominatim_search_url: "http://nominatim.openstreetmap.org/search",
     osm_poi_url: "http://www.overpass-api.de/api/interpreter",
 
-    osm_center_lon: 40,
-    osm_center_lat: 30,
+    osm_center_lon: 100,
+    osm_center_lat: 60,
     osm_initial_zoom: 2,
     osm_available_zoom: 20
 }
