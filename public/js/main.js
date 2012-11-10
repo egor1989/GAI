@@ -7,7 +7,7 @@ $(function () {
         "js/config.js",
         "js/map.js",
         "js/geo/country.js",
-        "js/geo/federal.js",
+        "js/geo/federal_.js",
         "js/geo/regions.js",
         "js/osm_heatmap.js",
         "js/utils.js",
