@@ -10,8 +10,7 @@ $(function () {
         "js/geo/federal_.js",
         "js/geo/regions.js",
         "js/osm_heatmap.js",
-        "js/utils.js",
-        "js/data/data.js"
+        "js/utils.js"
     ], function () {
 
         var charts = [],
@@ -136,7 +135,8 @@ function getChartDataFromJSON(json, colors) {
         vehicle = [],
         vehicleCount = 0;
     $.each(json.data, function (i, val) {
-        if (val.region != "Российская Федерация" && val.region.indexOf("округ") == -1) {
+        if (val.region != "Российская Федерация" && val.region.indexOf("округ") == -1
+            && val.region.indexOf(" и ") == -1) {
             rtcTotalCount += parseInt(val.rtc_total);
             rtcBy10kCount += parseInt(val.rtc_by10kk_abs);
             injuryCount += parseInt(val.injury_total);

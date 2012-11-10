@@ -739,7 +739,7 @@ window.reportdata = {
                 "injury_by100kk_mean":"92,0823519413966"
             },
             {
-                "region":"Ханты-мансийский авт.округ",
+                "region":"Ханты-Мансийский авт.округ",
                 "rtc_total":"1497",
                 "injury_total":"2103",
                 "vehicle_total":"609077",
@@ -750,7 +750,7 @@ window.reportdata = {
                 "injury_by100kk_mean":"106,836285545192"
             },
             {
-                "region":"Ямало-ненецкий авт.округ",
+                "region":"Ямало-Ненецкий авт.округ",
                 "rtc_total":"443",
                 "injury_total":"639",
                 "vehicle_total":"187178",
@@ -1772,7 +1772,7 @@ window.reportdata = {
                 "injury_by100kk_mean":"95,6766912848838"
             },
             {
-                "region":"Ханты-мансийский авт.округ",
+                "region":"Ханты-Мансийский авт.округ",
                 "rtc_total":"2526",
                 "injury_total":"3535",
                 "vehicle_total":"579146",
@@ -1783,7 +1783,7 @@ window.reportdata = {
                 "injury_by100kk_mean":"117,484319652753"
             },
             {
-                "region":"Ямало-ненецкий авт.округ",
+                "region":"Ямало-Ненецкий авт.округ",
                 "rtc_total":"685",
                 "injury_total":"996",
                 "vehicle_total":"180266",
@@ -2805,7 +2805,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "95,4602206778234"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "2476",
     			"injury_total": "3597",
     			"vehicle_total": "592350",
@@ -2816,7 +2816,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "119,65495834151"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "614",
     			"injury_total": "897",
     			"vehicle_total": "181535",
@@ -3826,7 +3826,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "93,7148599111085"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "2503",
     			"injury_total": "3597",
     			"vehicle_total": "603487",
@@ -3837,7 +3837,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "118,603212189725"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "636",
     			"injury_total": "882",
     			"vehicle_total": "181306",
@@ -4848,7 +4848,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "91,3360304111476"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "2703",
     			"injury_total": "3905",
     			"vehicle_total": "580210",
@@ -4859,7 +4859,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "122,468130962184"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "675",
     			"injury_total": "969",
     			"vehicle_total": "173549",
@@ -5870,7 +5870,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "86,289204807838"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "2949",
     			"injury_total": "4239",
     			"vehicle_total": "542742",
@@ -5881,7 +5881,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "124,467091574477"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "744",
     			"injury_total": "1034",
     			"vehicle_total": "164770",
@@ -6914,7 +6914,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "88,957384875705"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "3019",
     			"injury_total": "4370",
     			"vehicle_total": "514669",
@@ -6925,7 +6925,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "132,693831440739"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "740",
     			"injury_total": "1070",
     			"vehicle_total": "162805",
@@ -7991,7 +7991,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "92,4462591997777"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "3020",
     			"injury_total": "4504",
     			"vehicle_total": "503100",
@@ -8002,7 +8002,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "142,443608666139"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "800",
     			"injury_total": "1155",
     			"vehicle_total": "158105",
@@ -9079,7 +9079,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "100,008296909831"
     		},
     		{
-    			"region": "Ханты-мансийский авт.округ",
+    			"region": "Ханты-Мансийский авт.округ",
     			"rtc_total": "3034",
     			"injury_total": "4612",
     			"vehicle_total": "503427",
@@ -9090,7 +9090,7 @@ window.reportdata = {
     			"injury_by100kk_mean": "159,623422261552"
     		},
     		{
-    			"region": "Ямало-ненецкий авт.округ",
+    			"region": "Ямало-Ненецкий авт.округ",
     			"rtc_total": "637",
     			"injury_total": "901",
     			"vehicle_total": "153724",
