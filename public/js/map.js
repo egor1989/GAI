@@ -16,7 +16,7 @@ function BaseMap(id, config, i18n) {
     this.createMap(lat, lon, zoom);
 }
 
-BaseMap.prototype.fillStatistic = function(data)
+BaseMap.prototype.fillStatistic = function(data, maxStat)
 {
     var self = this;
     var refreshStat = function(layer) {
@@ -27,8 +27,12 @@ BaseMap.prototype.fillStatistic = function(data)
             });
 
             if (regionStat !== undefined)
+            {
                 feature.attributes.data = regionStat;
+                feature.attributes.colorIndicator = regionStat.rtc_total;
+            }
         });
+        layer.styleMap = self.createStyles(maxStat.rtcTotal);
         layer.redraw();
     };
 
@@ -286,14 +290,16 @@ BaseMap.prototype.installSearch = function(searchField) {
 /**
  * Creates a choropleth stylemap to define the map shading colors.
  */
-BaseMap.prototype.createStyles = function(direction, maxCount) {
+BaseMap.prototype.createStyles = function(maxCount) {
+    console.log(maxCount);
+
     var themeDefault = new OpenLayers.Style();
 
     var fillColor = '#B40404';
     range5 = new OpenLayers.Rule({
         filter:new OpenLayers.Filter.Comparison({
             type:OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-            property:"total",
+            property:"colorIndicator",
             value:maxCount*0.8
         }),
         symbolizer:{Polygon:{fillColor: fillColor}}
@@ -306,12 +312,12 @@ BaseMap.prototype.createStyles = function(direction, maxCount) {
             filters:[
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.LESS_THAN,
-                    property:"total",
+                    property:"colorIndicator",
                     value:maxCount*0.8
                 }),
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                    property:"total",
+                    property:"colorIndicator",
                     value:maxCount*0.6
                 })
             ]
@@ -326,12 +332,12 @@ BaseMap.prototype.createStyles = function(direction, maxCount) {
             filters:[
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.LESS_THAN,
-                    property:"total",
+                    property:"colorIndicator",
                     value:maxCount*0.6
                 }),
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                    property:"total",
+                    property:"colorIndicator",
                     value:maxCount*0.4
                 })
             ]
@@ -346,12 +352,12 @@ BaseMap.prototype.createStyles = function(direction, maxCount) {
             filters:[
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.LESS_THAN,
-                    property:"total",
+                    property:"colorIndicator",
                     value:maxCount*0.4
                 }),
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                    property:"total",
+                    property:"colorIndicator",
                     value:maxCount*0.2
                 })
             ]
@@ -366,12 +372,12 @@ BaseMap.prototype.createStyles = function(direction, maxCount) {
             filters:[
                 new OpenLayers.Filter.Comparison({
                     type: OpenLayers.Filter.Comparison.LESS_THAN,
-                    property: "total",
+                    property: "colorIndicator",
                     value: maxCount*0.2
                 }),
                 new OpenLayers.Filter.Comparison({
                     type:OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                    property:"total",
+                    property:"colorIndicator",
                     value: 1
                 })
             ]

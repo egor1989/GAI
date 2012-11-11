@@ -67,19 +67,21 @@ $(function () {
             /*
              * Map update
              */
-            Map.fillStatistic(window.reportdata[data]);
+            Map.fillStatistic(window.reportdata[data], window.RussiaStat[data]);
 
         };
         var timeLine = new TimeLine("#timeline", "#dates", "#issues", onTimeLineChange);
 
                 //timeLine.addDate('2010');
 
-
+        window.RussiaStat = [];
         for (var i = 2004; i < 2013; i++) {
             datasets[i + ''] = getChartDataFromJSON(window.reportdata[i + ''], colors);
+            getRussiaStatFromJSON(window.reportdata[i + ''], i);
             timeLine.addDate(i);
         }
 
+        console.log(window.RussiaStat);
 
         for (var i = 0; i < 4; i++)
             charts.push(createChart('testChart' + i, titles[i], datasets["2012"]['chart' + i]));
@@ -124,6 +126,20 @@ $(function () {
         });
     })
 });
+
+function getRussiaStatFromJSON(json, index) {
+    json.data.forEach(function (item) {
+        if (item.region == "Российская Федерация") {
+            window.RussiaStat[index + ''] = {
+                rtcTotal:parseInt(item.rtc_total),
+                rtcBy10k:parseInt(item.rtc_by10kk_abs),
+                injury:parseInt(item.injury_total),
+                vehicle:parseInt(item.vehicle_total)
+            };
+        }
+    });
+
+}
 
 function getChartDataFromJSON(json, colors) {
     var rtcTotal = [],
