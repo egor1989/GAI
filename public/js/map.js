@@ -32,7 +32,11 @@ BaseMap.prototype.fillStatistic = function(data, maxStat)
                 feature.attributes.colorIndicator = regionStat.rtc_total;
             }
         });
-        layer.styleMap = self.createStyles(maxStat.rtcTotal);
+        var maxCharacteristic = _.max(layer.features, function(feature) {
+            return feature.attributes.colorIndicator;
+        }).attributes.colorIndicator;
+        
+        layer.styleMap = self.createStyles(maxCharacteristic);
         layer.redraw();
     };
 
@@ -295,7 +299,7 @@ BaseMap.prototype.createStyles = function(maxCount) {
 
     var themeDefault = new OpenLayers.Style();
 
-    var fillColor = '#B40404';
+    var fillColor = '#800026';
     range5 = new OpenLayers.Rule({
         filter:new OpenLayers.Filter.Comparison({
             type:OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -305,7 +309,7 @@ BaseMap.prototype.createStyles = function(maxCount) {
         symbolizer:{Polygon:{fillColor: fillColor}}
     });
 
-    fillColor = '#DF0101';
+    fillColor = '#BD0026';
     range4 = new OpenLayers.Rule({
         filter: new OpenLayers.Filter.Logical({
             type: OpenLayers.Filter.Logical.AND,
@@ -325,7 +329,7 @@ BaseMap.prototype.createStyles = function(maxCount) {
         symbolizer: {Polygon:{fillColor:fillColor}}
     });
 
-    fillColor = '#FF0000';
+    fillColor = '#E31A1C';
     range3 = new OpenLayers.Rule({
         filter: new OpenLayers.Filter.Logical({
             type: OpenLayers.Filter.Logical.AND,
@@ -345,7 +349,7 @@ BaseMap.prototype.createStyles = function(maxCount) {
         symbolizer: {Polygon:{fillColor:fillColor}}
     });
 
-    fillColor = '#FE2E2E';
+    fillColor = '#FC4E2A';
     range2 = new OpenLayers.Rule({
         filter: new OpenLayers.Filter.Logical({
             type: OpenLayers.Filter.Logical.AND,
@@ -365,7 +369,7 @@ BaseMap.prototype.createStyles = function(maxCount) {
         symbolizer: {Polygon:{fillColor:fillColor}}
     });
 
-    fillColor = '#FA5858';
+    fillColor = '#FD8D3C';
     range1 = new OpenLayers.Rule({
         filter: new OpenLayers.Filter.Logical({
             type: OpenLayers.Filter.Logical.AND,
